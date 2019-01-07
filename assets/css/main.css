@@ -153,12 +153,12 @@ a:after {
 
 /* Header Wrap */
 #headerwrap {
-	background: url(../img/header-bg1.jpg) no-repeat center top;
+	background: url(../img/me.jpg) no-repeat center top;
 	margin-top: 60px;
 	padding-top:140px;
 	text-align:center;
 	background-attachment: relative;
-	background-position: center center;
+	background-position: center top;
 	min-height: 500px;
 	width: 100%;
 	
@@ -281,4 +281,9 @@ a:after {
 
 sm {
 	font-size: 12px;
+}
+
+.card img{
+	/*height: 698px;*/
+	/*width: 931px;*/
 }
