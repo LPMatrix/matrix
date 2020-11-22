@@ -1,0 +1,27 @@
+var items = [
+  {
+    "name": "Death Note",
+    "image": "deathnote.png",
+    "description": "A tribute and log of beloved products and services that failed in Nigeria.",
+    "link": "https://lpmatrix.github.io/death-note/",
+  },
+  {
+    "name": "Cartie",
+    "image": "cartie.png",
+    "description": "A clean shopping cart implementation for Laravel.",
+    "link": "https://github.com/LPMatrix/cartie",
+  },
+  {
+    "name": "Mind",
+    "image": "mind.png",
+    "description": "Mind is a Chrome extension that let you access self help tips and other fun stuff",
+    "link": "https://github.com/LPMatrix/Mind",
+  },
+  {
+    "name": "ShellOps",
+    "image": "do.jpg",
+    "description": "A tool for setting up your deployment stack quickly on cloud infrastructures like Digitalocean, AWS etc.",
+    "link": "https://github.com/LPMatrix/ShellOps",
+  },
+  
+]
