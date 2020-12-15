@@ -23,5 +23,17 @@ var items = [
     "description": "A tool for setting up your deployment stack quickly on cloud infrastructures like Digitalocean, AWS etc.",
     "link": "https://github.com/LPMatrix/ShellOps",
   },
+  {
+    "name": "Wordroute",
+    "image": "wordroute.png",
+    "description": "Gets you the routes rom one point to another.",
+    "link": "https://lpmatrix.github.io/wordroute/",
+  },
+  {
+    "name": "Iqmah",
+    "image": "iqmah.png",
+    "description": " The main aim of this website is to spread the true message of Islam to the world.",
+    "link": "http://iqmah.mubaraq.com.ng/",
+  },
   
 ]
