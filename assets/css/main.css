@@ -153,12 +153,12 @@ a:after {
 
 /* Header Wrap */
 #headerwrap {
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/me.jpg) no-repeat center top;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/me.jpg) no-repeat;
 	margin-top: 60px;
-	padding-top:140px;
+	padding-top:300px;
 	text-align:center;
 	background-attachment: relative;
-	background-position: center top;
+	background-position: center;
 	min-height: 500px;
 	width: 100%;
 	
