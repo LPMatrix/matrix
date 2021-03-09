@@ -35,5 +35,17 @@ var items = [
     "description": " The main aim of this website is to spread the true message of Islam to the world.",
     "link": "http://iqmah.mubaraq.com.ng/",
   },
+  {
+    "name": "muzik",
+    "image": "muzikkal.png",
+    "description": " A minimal music player app with sveltejs.",
+    "link": "https://muzikkal.netlify.app/",
+  },
+  {
+    "name": "muzik",
+    "image": "paletteer.png",
+    "description": " A tool to help you get the colour palette from images you absolutely love.",
+    "link": "https://paletteer.netlify.app/",
+  },
   
 ]
