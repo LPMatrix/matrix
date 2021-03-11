@@ -42,7 +42,7 @@ var items = [
     "link": "https://muzikkal.netlify.app/",
   },
   {
-    "name": "muzik",
+    "name": "Paletteer",
     "image": "paletteer.png",
     "description": " A tool to help you get the colour palette from images you absolutely love.",
     "link": "https://paletteer.netlify.app/",
