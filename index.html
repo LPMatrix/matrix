@@ -1,321 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sanusi Mubaraq portfolio">
-    <meta name="author" content="Sanusi Mubaraq">
-    <meta name="keywords" content="Sanusi,Mubaraq, software engineer, portfolio, web developer">
-    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sanusi Mubaraq portfolio">
+  <meta name="author" content="Sanusi Mubaraq">
+  <meta name="keywords" content="Sanusi, Mubaraq, software engineer, portfolio, web developer">
+  <title>Mubaraq Sanusi | Software Engineer</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D0F18',
+            secondary: '#FBFBFB',
+            accent: '#3F8CFF',
+            text: '#C9C9C9',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  
+  <!-- Locomotive Scroll for smooth scrolling -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/styles.css">
+  
+  <!-- Custom JavaScript -->
+  <script src="assets/script.js" defer></script>
+  <script src="assets/projects.js" defer></script>
 
-    <title>Mubaraq - Software Engineer</title>
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+</head>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-    
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script> 
-
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-    <script type="text/javascript" src="projects.json"></script>
-
-  </head>
-
-  <body data-spy="scroll" data-offset="0" data-target="#nav">
-
-	<div id="section-topbar">
-		<div id="topbar-inner">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<div class="dropdown">
-						<ul id="nav" class="nav">
-							<li class="menu-item"><a class="smoothScroll" href="#about" title="About"><i class="icon-user"></i></a></li>
-							<li class="menu-item"><a class="smoothScroll" href="#resume" title="Resume"><i class="icon-file"></i></a></li>
-							<li class="menu-item"><a class="smoothScroll" href="#work" title="Works"><i class="icon-briefcase"></i></a></li>
-							<li class="menu-item"><a class="smoothScroll" href="#contact" title="Contact"><i class="icon-envelope"></i></a></li>
-							<li class="menu-item"><a target="_blank" href="https://hashnode.com/@matrix" title="Articles"><i class="icon-book"></i></a></li>
-						</ul><!--/ uL#nav -->
-					</div><!-- /.dropdown -->
-
-					<div class="clear"></div>
-				</div><!--/.row -->
-			</div><!--/.container -->
-
-			<div class="clear"></div>
-		</div><!--/ #topbar-inner -->
-	</div><!--/ #section-topbar -->
-	
-	<div id="headerwrap">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-12">
-					<h1>Sanusi M. Mubaraq</h1>
-					<h3>Software Engineer</h3>
-				</div><!--/.col-lg-12 -->
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/.#headerwrap -->
-	
-
-	<section id="about" name="about"></section>
-	<div id="intro">
-		<div class="container">
-			<div class="row">
-				
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5 class="text-white">ABOUT</h5>
-				</div>
-				<div class="col-lg-6">
-					<p class="text-white">Sanusi Mubaraq is a Software Engineer with 4 years of successful experience in building scalable technology solutions. Mubaraq has a passion to lead and share knowledge. With an innate love for writing code to solve complex problems. I am constantly unlearning, relearning and recreating myself. I'm interested in building tools for the web.</p>
-				</div>
-				<div class="col-lg-3">
-					<a href="WebCV.pdf" target="_blank"><i class="icon-file"></i><sm>DOWNLOAD CV</sm></a>
-				</div>
-				
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/ #intro -->
-
-
-	<section id="resume" name="resume"></section>
-	<!--EDUCATION DESCRIPTION -->
-	<div class="container desc">
-		<div class="row">
-
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>EDUCATION</h5>
-				</div>
-				<div class="col-lg-6">
-					<p><t>Bsc. Computer Science</t><br/>
-						University of Ilorin <br/>
-						<i>4 Year Course</i>
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>GRADUATED 2018</sm><br/>
-					</p>
-				</div>
-	
-		</div><!--/.row -->
-		<br>
-		<hr>
-	</div><!--/.container -->
-	
-	
-	<!--WORK DESCRIPTION -->
-	<div class="container desc">
-		<div class="row">
-
-				<div class="col-lg-2">
-					<h5>WORK</h5>
-				</div>
-				<div class="col-lg-6">
-					<p><t>IoT Developer</t><br/>
-						ICE. <br/>
-					</p>
-					<p><more>Work with Data Scientists on large, complex energy data sets, analyzing user
-needs and working as service designers.</more></p>
-					<p><more>Creating and developing devices, sensors and software.</more></p>
-					<p><more>Designing, coding and testing features of IoT devices.</more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>JUNE 2021 - TILL NOW</sm></p>
-				</div>
-				<div class="col-lg-2">
-					<h5></h5>
-				</div>
-				<div class="col-lg-6">
-					<p><t>Python Instructor</t><br/>
-						CoLab. <br/>
-					</p>
-					<p><more>I Worked on programmes to train people of all ages to become software engineers through lectures and project based learning.</more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>SEPTEMBER 2018 - OCTOBER 2021</sm></p>
-				</div>
-				<div class="col-lg-2">
-					<h5></h5>
-				</div>
-				<div class="col-lg-6">
-					<p><t>RedeHub</t><br/>
-						Software Engineer <br/>
-					</p>
-					<p><more>I interned at RedeHub  where I gained more experience and insights into web development as a niche.</more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>DECEMBER 2019 - TILL NOW</sm></p>
-				</div>
-				<div class="col-lg-2">
-					<h5></h5>
-				</div>
-				<div class="col-lg-6">
-					<p><t>Freelance</t><br/>
-						Software Engineer <br/>
-					</p>
-					<p><more>I am a freelancer building, revamping, managing software solutions for clients across the globe.</more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>DECEMBER 2018 - TILL NOW</sm></p>
-				</div>
-		</div><!--/.row -->
-		<br>
-		<hr>
-	</div><!--/.container -->
-	
-	
-	<!--SKILLS DESCRIPTION -->
-	<div id="skillswrap">
-		<div class="container">
-			<div class="row">
-					<div class="col-lg-2 col-lg-offset-1">
-						<h5 class="text-white">SKILLS</h5>
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">Javascript</p>
-
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">Python</p>
-
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">CSS</p>
-
-					</div>
-					
-					<div class="col-lg-2 col-lg-offset-1">
-						<h5></h5>
-					</div>
-
-					<div class="col-lg-3 col-lg-offset-3 centered">
-						<p class="text-white">Laravel</p>
-
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">VueJS</p>
-
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">DigitalOcean</p>
-
-					</div>
-
-					<div class="col-lg-2 col-lg-offset-1">
-						<h5></h5>
-					</div>
-
-					<div class="col-lg-3 col-lg-offset-3 centered">
-						<p class="text-white">Big Data</p>
-
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">Microsoft Azure</p>
-
-					</div>
-					<div class="col-lg-3 centered">
-						<p class="text-white">IoT</p>
-
-					</div>
-
-			</div><!--/.row -->
-			<br>
-		</div><!--/.container -->
-	</div><!--/ #skillswrap -->
-
-
-
-	<section id="work" name="work"></section>
-
-		<br>
-		<br>
-	<!-- </div> --> <!--/.container -->
-	
-	<section class="portfolio" id="portfolio" x-data="items">
-    <div class="container text-center">
-      <h2>
-          Portfolio
-        </h2>
-
+<body class="relative">
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-text">
+      <span style="--i:1">M</span>
+      <span style="--i:2">U</span>
+      <span style="--i:3">B</span>
+      <span style="--i:4">A</span>
+      <span style="--i:5">R</span>
+      <span style="--i:6">A</span>
+      <span style="--i:7">Q</span>
     </div>
-
-    <div class="portfolio-grid container">
-      <div class="row">
-      	<div class="card-group">
-      		<template x-for="item in items" :key="item">
-      			<div class="col-lg-6 mb-3">
-				 <div class="card h-100">
-				  <img class="card-img-top" :src="`assets/img/${item.image}`" alt="Sanusi Mubaraq" style="object-fit: cover; height: 35vh;">
-				  <a :href="`${item.link}`" target="_blank">
-				  <div class="card-body">
-				  	<h3 class="card-title text-uppercase border-bottom" x-text="item['name']"></h3>
-				    <p class="card-text" x-text="item['description']"></p>
-				  </div>
-				</a>
-				</div>
-				</div>
-      		</template>
-      </div>
+    <div class="loader-progress">
+      <div class="loader-progress-bar" id="loader-progress-bar"></div>
+    </div>
+  </div>
+  
+  <!-- Custom Cursor -->
+  <div class="cursor hidden md:block" id="cursor"></div>
+  
+  <!-- Grid Lines -->
+  <div class="grid-lines">
+    <div class="grid-line grid-line-vertical" style="left: 20%;"></div>
+    <div class="grid-line grid-line-vertical" style="left: 40%;"></div>
+    <div class="grid-line grid-line-vertical" style="left: 60%;"></div>
+    <div class="grid-line grid-line-vertical" style="left: 80%;"></div>
+    <div class="grid-line grid-line-horizontal" style="top: 20%;"></div>
+    <div class="grid-line grid-line-horizontal" style="top: 40%;"></div>
+    <div class="grid-line grid-line-horizontal" style="top: 60%;"></div>
+    <div class="grid-line grid-line-horizontal" style="top: 80%;"></div>
+  </div>
+  
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  
+  <!-- Navigation Menu (Desktop) -->
+  <nav class="fixed top-0 left-0 w-full py-8 px-4 md:px-16 z-50 transition-all duration-300" id="mainNav">
+    <div class="container mx-auto">
+      <div class="flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
+        
+        <div class="hidden md:flex space-x-8 items-center">
+          <a href="#about" class="nav-item hover:text-accent transition-colors duration-300">About</a>
+          <a href="#resume" class="nav-item hover:text-accent transition-colors duration-300">Experience</a>
+          <a href="#work" class="nav-item hover:text-accent transition-colors duration-300">Projects</a>
+          <a href="#contact" class="nav-item hover:text-accent transition-colors duration-300">Contact</a>
+          <a href="https://hashnode.com/@matrix" target="_blank" class="nav-item hover:text-accent transition-colors duration-300">Articles</a>
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle md:hidden" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
-  </section>
-
-	<section id="contact" name="contact"></section>
-	<!--FOOTER DESCRIPTION -->
-	<div id="footwrap">
-		<div class="container">
-			<div class="row">
-			
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>CONTACT</h5>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="flex flex-col items-center space-y-8 text-3xl">
+      <a href="#about" class="mobile-nav-item" onclick="toggleMobileMenu()">About</a>
+      <a href="#resume" class="mobile-nav-item" onclick="toggleMobileMenu()">Experience</a>
+      <a href="#work" class="mobile-nav-item" onclick="toggleMobileMenu()">Projects</a>
+      <a href="#contact" class="mobile-nav-item" onclick="toggleMobileMenu()">Contact</a>
+      <a href="https://hashnode.com/@matrix" target="_blank" class="mobile-nav-item">Articles</a>
+      
+      <div class="flex space-x-6 mt-8">
+        <a href="https://twitter.com/sanusi_mubaraq" class="text-2xl social-icon" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://ng.linkedin.com/in/mubaraq-sanusi-957665b5" class="text-2xl social-icon" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/LPMatrix" class="text-2xl social-icon" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Content Container -->
+  <main class="smooth-scroll" id="smooth-content">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-4 md:px-16 relative overflow-hidden" id="hero">
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-20 z-0"></div>
+      
+      <div class="container mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <p class="text-accent mb-2 stagger-fade-in">Hello, my name is</p>
+            <h1 class="text-5xl md:text-8xl font-bold mb-4 stagger-fade-in">
+              <span class="block">Sanusi</span>
+              <span class="block text-gradient">Mubaraq</span>
+            </h1>
+            <p class="text-text text-lg md:text-xl mb-8 max-w-xl stagger-fade-in">
+              Software Engineer with 4 years of experience building scalable technology solutions, with a passion for web development and IoT.
+            </p>
+            <div class="flex space-x-4 stagger-fade-in">
+              <a href="#work" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300">View Projects</a>
+              <a href="#contact" class="bg-accent text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors duration-300">Contact Me</a>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2 relative">
+            <div class="hero-image-container stagger-fade-in relative">
+              <img src="assets/img/me.jpg" alt="Sanusi Mubaraq" class="rounded-lg shadow-2xl w-full md:max-w-md mx-auto hero-image">
+              <div class="absolute -bottom-10 -left-10 w-32 h-32 border-l-4 border-b-4 border-accent"></div>
+              <div class="absolute -top-10 -right-10 w-32 h-32 border-t-4 border-r-4 border-accent"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <a href="#about" class="text-accent">
+            <i class="fas fa-chevron-down"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="min-h-screen py-20 px-4 md:px-16 relative">
+      <div class="container mx-auto">
+        <div class="flex flex-col mb-12">
+          <span class="text-accent mb-2 overflow-hidden">
+            <span class="reveal-text">
+              <span>01 / WHO I AM</span>
+            </span>
+          </span>
+          <h2 class="section-heading parallax-text">ABOUT</h2>
+        </div>
+        
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2 mb-10 md:mb-0 text-text">
+            <div class="max-w-xl space-y-6">
+              <p class="stagger-fade-in text-lg">
+                Sanusi Mubaraq is a Software Engineer with 4 years of successful experience in building scalable technology solutions. Mubaraq has a passion to lead and share knowledge. With an innate love for writing code to solve complex problems.
+              </p>
+              <p class="stagger-fade-in text-lg">
+                I am constantly unlearning, relearning and recreating myself. I'm interested in building tools for the web.
+              </p>
+              
+              <div class="stagger-fade-in">
+                <a href="WebCV.pdf" target="_blank" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300 inline-flex items-center">
+                  <i class="fas fa-file-download mr-2"></i> DOWNLOAD CV
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="md:w-1/2 pl-0 md:pl-12">
+            <h3 class="text-xl font-bold mb-6 text-accent stagger-fade-in">My Skills</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-fade-in">
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">JavaScript</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Python</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">CSS</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Laravel</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">VueJS</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">DigitalOcean</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Big Data</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Microsoft Azure</div>
+              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">IoT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Resume Section -->
+    <section id="resume" class="min-h-screen py-20 px-4 md:px-16 relative">
+      <div class="container mx-auto">
+        <div class="flex flex-col mb-12">
+          <span class="text-accent mb-2 overflow-hidden">
+            <span class="reveal-text">
+              <span>02 / MY JOURNEY</span>
+            </span>
+          </span>
+          <h2 class="section-heading parallax-text">EXPERIENCE</h2>
+        </div>
+        
+        <div class="flex flex-col md:flex-row mb-20">
+          <div class="md:w-1/3 mb-8 md:mb-0">
+            <h3 class="text-xl font-bold text-accent stagger-fade-in">Education</h3>
+          </div>
+          
+          <div class="md:w-2/3">
+            <div class="experience-item pb-10 stagger-fade-in">
+              <h3 class="text-xl font-bold">BSc. Computer Science</h3>
+              <p class="text-accent">University of Ilorin</p>
+              <p class="text-text">4 Year Course</p>
+              <p class="text-sm text-gray-500 mt-2">GRADUATED 2018</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/3 mb-8 md:mb-0">
+            <h3 class="text-xl font-bold text-accent stagger-fade-in">Work</h3>
+          </div>
+          
+          <div class="md:w-2/3">
+            <div class="experience-item pb-10 stagger-fade-in">
+              <h3 class="text-xl font-bold">IoT Developer</h3>
+              <p class="text-accent">ICE.</p>
+              <p class="text-sm text-gray-500 mb-3">JUNE 2021 - PRESENT</p>
+              <ul class="text-text space-y-2">
+                <li>• Work with Data Scientists on large, complex energy data sets, analyzing user needs and working as service designers.</li>
+                <li>• Creating and developing devices, sensors and software.</li>
+                <li>• Designing, coding and testing features of IoT devices.</li>
+              </ul>
+            </div>
+            
+            <div class="experience-item pb-10 stagger-fade-in">
+              <h3 class="text-xl font-bold">Python Instructor</h3>
+              <p class="text-accent">CoLab.</p>
+              <p class="text-sm text-gray-500 mb-3">SEPTEMBER 2018 - OCTOBER 2021</p>
+              <p class="text-text">I Worked on programmes to train people of all ages to become software engineers through lectures and project based learning.</p>
+            </div>
+            
+            <div class="experience-item pb-10 stagger-fade-in">
+              <h3 class="text-xl font-bold">Software Engineer</h3>
+              <p class="text-accent">RedeHub</p>
+              <p class="text-sm text-gray-500 mb-3">DECEMBER 2019 - PRESENT</p>
+              <p class="text-text">I interned at RedeHub where I gained more experience and insights into web development as a niche.</p>
+            </div>
+            
+            <div class="experience-item pb-10 stagger-fade-in">
+              <h3 class="text-xl font-bold">Software Engineer</h3>
+              <p class="text-accent">Freelance</p>
+              <p class="text-sm text-gray-500 mb-3">DECEMBER 2018 - PRESENT</p>
+              <p class="text-text">I am a freelancer building, revamping, managing software solutions for clients across the globe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="work" class="min-h-screen py-20 px-4 md:px-16 relative">
+      <div class="container mx-auto">
+        <div class="flex flex-col mb-12">
+          <span class="text-accent mb-2 overflow-hidden">
+            <span class="reveal-text">
+              <span>03 / MY WORK</span>
+            </span>
+          </span>
+          <h2 class="section-heading parallax-text">PROJECTS</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" x-data="{ items: window.projects || [] }">
+			<template x-for="item in items" :key="item.name">
+				<div class="work-card h-96 rounded-lg overflow-hidden shadow-lg stagger-fade-in">
+					<img class="w-full h-full object-cover" :src="`assets/img/${item.image}`" :alt="item.name">
+					<div class="work-card-overlay">
+					<h3 class="text-xl font-bold mb-2" x-text="item.name"></h3>
+					<p class="text-center mb-4 px-4" x-text="item.description"></p>
+					<a :href="item.link" class="px-4 py-2 border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300">View Project</a>
+					</div>
 				</div>
-				<div class="col-lg-6">
-					<p><t>Email</t><br/>
-						mubaraqsanusi908@gmail.com <br/>
-					</p>
-					<p><t>Adress</t><br/>
-						CoLab <br/>
-						4 Barnawa Close, Off Challawa Crescent, Barnawa, Kaduna <br/>
-						Kaduna, Kaduna. <br/>
-					</p>
-					<p><t>Phone</t><br/>
-						+234 8132554349 <br/>
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>SOCIAL LINKS</sm></p>
-					<p>
-						<a href="https://twitter.com/sanusi_mubaraq"><i class="icon-twitter"></i></a>
-						<a href="https://ng.linkedin.com/in/mubaraq-sanusi-957665b5"><i class="icon-linkedin"></i></a>
-						<a href="https://github.com/LPMatrix"><i class="icon-github"></i></a>
-
-					</p>
-				</div>
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/ #footer -->
-	
-	<div id="c">
-		<div class="container">
-			<p>Created with ❤️</p>
-		
-		</div>
-	</div>
-	
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/bootstrap.js"></script>
-  </body>
+			</template>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen py-20 px-4 md:px-16 relative">
+      <div class="container mx-auto">
+        <div class="flex flex-col mb-12">
+          <span class="text-accent mb-2 overflow-hidden">
+            <span class="reveal-text">
+              <span>04 / GET IN TOUCH</span>
+            </span>
+          </span>
+          <h2 class="section-heading parallax-text">CONTACT</h2>
+        </div>
+        
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <form class="space-y-6 stagger-fade-in">
+              <div>
+                <label for="name" class="block text-sm text-text mb-2">Your Name</label>
+                <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300">
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm text-text mb-2">Your Email</label>
+                <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300">
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm text-text mb-2">Your Message</label>
+                <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300"></textarea>
+              </div>
+              
+              <button type="submit" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300">
+                Send Message <i class="fas fa-paper-plane ml-2"></i>
+              </button>
+            </form>
+          </div>
+          
+          <div class="md:w-1/2 md:pl-12">
+            <div class="space-y-10">
+              <div class="stagger-fade-in">
+                <h3 class="text-xl font-bold mb-4 text-accent">Contact Information</h3>
+                <div class="space-y-4">
+                  <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                      <i class="fas fa-envelope text-accent"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-text">Email</p>
+                      <p>mubaraqsanusi908@gmail.com</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                      <i class="fas fa-map-marker-alt text-accent"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-text">Address</p>
+                      <p>CoLab</p>
+                      <p>4 Barnawa Close, Off Challawa Crescent,</p>
+                      <p>Barnawa, Kaduna</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                      <i class="fas fa-phone-alt text-accent"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-text">Phone</p>
+                      <p>+234 8132554349</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="stagger-fade-in">
+                <h3 class="text-xl font-bold mb-4 text-accent">Social Links</h3>
+                <div class="flex space-x-6">
+                  <a href="https://x.com/WeirdMatrix" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/sirematrix/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a href="https://github.com/LPMatrix" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10 text-center relative z-10">
+    <div class="container mx-auto px-4">
+      <div class="mb-8">
+        <a href="#" class="text-3xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
+      </div>
+      <div class="max-w-lg mx-auto mb-8">
+        <p class="text-text">Building digital products, brands, and experiences that people love.</p>
+      </div>
+      <div class="flex justify-center space-x-6 mb-8">
+        <a href="https://x.com/WeirdMatrix" class="text-xl social-icon" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sirematrix/" class="text-xl social-icon" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/LPMatrix" class="text-xl social-icon" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <p class="text-sm text-text">Created with <span class="text-accent">❤️</span> © 2025</p>
+    </div>
+  </footer>
+</body>
 </html>

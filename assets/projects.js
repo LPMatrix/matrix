@@ -1,4 +1,10 @@
-var items = [
+window.projects = [
+  {
+    "name": "Code Explainer",
+    "image": "explainer.png",
+    "description": "Powered by Mistral AI! It takes any code snippet and explains exactly what it does in plain English. Perfect for learning, code reviews, or understanding legacy code.",
+    "link": "https://github.com/LPMatrix/wave-portal",
+  },
   {
     "name": "Death Note",
     "image": "deathnote.png",
@@ -46,12 +52,6 @@ var items = [
     "image": "paletteer.png",
     "description": " A tool to help you get the colour palette from images you absolutely love.",
     "link": "https://paletteer.netlify.app/",
-  },
-  {
-    "name": "Web3 App with Solidity + Ethereum Smart Contracts",
-    "image": "https://assets.zipschool.com/posters/eth_course.png",
-    "description": " A place where anyone on the internet can learn a little about who I am and send me a 👋 + a message and have that data saved on the blockchain through an Ethereum smart contract.",
-    "link": "https://github.com/LPMatrix/wave-portal",
   },
   
 ]
