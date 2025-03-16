@@ -1,8 +1,3 @@
-/**
- * Mubaraq Sanusi Portfolio
- * Awwards-Worthy JavaScript
- */
-
 // Loading Animation
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
@@ -371,6 +366,3 @@ window.addEventListener('load', () => {
     
     document.body.appendChild(toggleButton);
   }
-  
-  // Optional: Enable this feature if desired
-  // createThemeToggle();
