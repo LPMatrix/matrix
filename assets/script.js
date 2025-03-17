@@ -175,13 +175,13 @@ window.addEventListener('load', () => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
-            delay: index * 0.1,
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
+            // duration: 0.8,
+            // delay: index * 0.1,
+            // scrollTrigger: {
+            //   trigger: el,
+            //   start: 'top 80%',
+            //   toggleActions: 'play none none none'
+            // }
           }
         );
       });
@@ -192,12 +192,12 @@ window.addEventListener('load', () => {
         gsap.to(text, {
           backgroundPositionY: '100%',
           ease: 'none',
-          scrollTrigger: {
-            trigger: text.parentElement,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
+          // scrollTrigger: {
+          //   trigger: text.parentElement,
+          //   start: 'top bottom',
+          //   end: 'bottom top',
+          //   scrub: true
+          // }
         });
       });
       
@@ -211,11 +211,11 @@ window.addEventListener('load', () => {
             opacity: 0.1,
             x: 0,
             duration: 1,
-            scrollTrigger: {
-              trigger: heading,
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
+            // scrollTrigger: {
+            //   trigger: heading,
+            //   start: 'top 80%',
+            //   toggleActions: 'play none none none'
+            // }
           }
         );
       });
@@ -366,3 +366,4 @@ window.addEventListener('load', () => {
     
     document.body.appendChild(toggleButton);
   }
+  

@@ -10,20 +10,7 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0D0F18',
-            secondary: '#FBFBFB',
-            accent: '#3F8CFF',
-            text: '#C9C9C9',
-          }
-        }
-      }
-    }
-  </script>
+
   
   <!-- GSAP for animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -258,10 +245,21 @@
           </div>
           
           <div class="md:w-2/3">
+			<div class="experience-item pb-10 stagger-fade-in">
+				<h3 class="text-xl font-bold">Software Engineer</h3>
+				<p class="text-accent">Abango Technologies.</p>
+				<p class="text-sm text-gray-500 mb-3">JUNE 2022 - PRESENT</p>
+				<ul class="text-text space-y-2">
+				  <li>• Developed highly secure APIs for gift card transactions, payment processing, bill payment, and crypto trading, resulting in a 50% decrease in security incidents and a 30% increase in successful transactions.</li>
+				  <li>• Scaled backend infrastructure to meet growing user demand and traffic.</li>
+				  <li>• Implemented CI/CD pipelines, reducing manual deployment efforts by 35% and enabling faster feature releases.</li>
+				</ul>
+			  </div>
+
             <div class="experience-item pb-10 stagger-fade-in">
               <h3 class="text-xl font-bold">IoT Developer</h3>
               <p class="text-accent">ICE.</p>
-              <p class="text-sm text-gray-500 mb-3">JUNE 2021 - PRESENT</p>
+              <p class="text-sm text-gray-500 mb-3">JUNE 2021 - JUNE 2022</p>
               <ul class="text-text space-y-2">
                 <li>• Work with Data Scientists on large, complex energy data sets, analyzing user needs and working as service designers.</li>
                 <li>• Creating and developing devices, sensors and software.</li>
@@ -278,15 +276,8 @@
             
             <div class="experience-item pb-10 stagger-fade-in">
               <h3 class="text-xl font-bold">Software Engineer</h3>
-              <p class="text-accent">RedeHub</p>
-              <p class="text-sm text-gray-500 mb-3">DECEMBER 2019 - PRESENT</p>
-              <p class="text-text">I interned at RedeHub where I gained more experience and insights into web development as a niche.</p>
-            </div>
-            
-            <div class="experience-item pb-10 stagger-fade-in">
-              <h3 class="text-xl font-bold">Software Engineer</h3>
               <p class="text-accent">Freelance</p>
-              <p class="text-sm text-gray-500 mb-3">DECEMBER 2018 - PRESENT</p>
+              <p class="text-sm text-gray-500 mb-3">DECEMBER 2018 - OCTOBER 2021</p>
               <p class="text-text">I am a freelancer building, revamping, managing software solutions for clients across the globe.</p>
             </div>
           </div>
@@ -306,7 +297,7 @@
           <h2 class="section-heading parallax-text">PROJECTS</h2>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" x-data="{ items: window.projects || [] }">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{ items: window.projects || [] }">
 			<template x-for="item in items" :key="item.name">
 				<div class="work-card h-96 rounded-lg overflow-hidden shadow-lg stagger-fade-in">
 					<img class="w-full h-full object-cover" :src="`assets/img/${item.image}`" :alt="item.name">
