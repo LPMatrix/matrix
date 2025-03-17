@@ -9,7 +9,7 @@ window.projects = [
     "name": "Death Note",
     "image": "deathnote.png",
     "description": "A tribute and log of beloved products and services that failed in Nigeria.",
-    "link": "https://lpmatrix.github.io/death-note/",
+    "link": "https://lpmatrix.github.io/sleeping-legacies/",
   },
   {
     "name": "Cartie",
