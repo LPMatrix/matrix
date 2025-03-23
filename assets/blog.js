@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   // RSS feed URL - replace with your actual RSS feed URL
-  const rssFeed = 'https://dev.to/feed/lpmatrix';
+  const rssFeed = 'https://matrix.hashnode.dev/rss.xml';
   
   // Use a CORS proxy if needed (for production, set up your own proxy)
-  const rssFeedUrl = `http://cors-anywhere.herokuapp.com/` + rssFeed;
+  const rssFeedUrl = `http://www.whateverorigin.org/get?url=` + encodeURIComponent(rssFeed);
   
   // Fetch the RSS feed
   fetchRSSFeed(rssFeedUrl);
@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Parse the XML
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+      console.log(xmlText);
       
       // Process the feed
       const posts = processRSSFeed(xmlDoc);

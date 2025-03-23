@@ -270,13 +270,13 @@
         <!-- Pagination -->
         <div class="flex justify-center mt-12">
           <div class="flex space-x-2">
-            <button class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300">
+            <button id="prevPage" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300" disabled>
               <i class="fas fa-chevron-left"></i>
             </button>
-            <button class="w-10 h-10 rounded-full bg-accent flex items-center justify-center">1</button>
-            <button class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300">2</button>
-            <button class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300">3</button>
-            <button class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300">
+            <div id="paginationNumbers" class="flex space-x-2">
+              <!-- Page numbers will be dynamically generated here -->
+            </div>
+            <button id="nextPage" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300">
               <i class="fas fa-chevron-right"></i>
             </button>
           </div>
@@ -309,5 +309,80 @@
       <p class="text-sm text-text">Created with <span class="text-accent">❤️</span> © 2025</p>
     </div>
   </footer>
+  <script>
+    const postsPerPage = 6; // Number of posts per page
+    let currentPage = 1;
+    let totalPosts = 0; // This should be dynamically set based on the total number of posts
+    const postsContainer = document.getElementById('posts-container');
+    const paginationNumbers = document.getElementById('paginationNumbers');
+    const prevPageButton = document.getElementById('prevPage');
+    const nextPageButton = document.getElementById('nextPage');
+
+    // Function to fetch and display posts for the current page
+    function displayPosts(page) {
+      // Fetch posts dynamically (replace with your API or data fetching logic)
+      // For demonstration, we'll assume `totalPosts` is already set
+      const start = (page - 1) * postsPerPage;
+      const end = start + postsPerPage;
+
+      // Clear existing posts
+      postsContainer.innerHTML = '';
+
+      // Simulate fetching posts
+      for (let i = start + 1; i <= Math.min(end, totalPosts); i++) {
+        const post = document.createElement('div');
+        post.className = 'blog-post-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300';
+        post.innerHTML = `<div class="p-4 bg-gray-800">
+                <h3 class="text-xl font-bold text-white">Post Title ${i}</h3>
+                <p class="text-text line-clamp-3">This is a brief description of post ${i}.</p>
+              </div>`;
+        postsContainer.appendChild(post);
+      }
+
+      updatePagination();
+    }
+
+    // Function to update pagination buttons
+    function updatePagination() {
+      paginationNumbers.innerHTML = '';
+      const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.className = `w-10 h-10 rounded-full flex items-center justify-center ${
+      i === currentPage ? 'bg-accent' : 'bg-gray-800 hover:bg-accent'
+        } transition-colors duration-300`;
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => {
+      currentPage = i;
+      displayPosts(currentPage);
+        });
+        paginationNumbers.appendChild(pageButton);
+      }
+
+      prevPageButton.disabled = currentPage === 1;
+      nextPageButton.disabled = currentPage === totalPages;
+    }
+
+    // Event listeners for previous and next buttons
+    prevPageButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayPosts(currentPage);
+      }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+      const totalPages = Math.ceil(totalPosts / postsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayPosts(currentPage);
+      }
+    });
+
+    // Initialize pagination (set totalPosts dynamically)
+    totalPosts = 20; // Example: Replace with actual total posts count
+    displayPosts(currentPage);
+  </script>
 </body>
 </html>
