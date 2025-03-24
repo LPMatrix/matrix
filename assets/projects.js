@@ -1,9 +1,21 @@
 window.projects = [
   {
+    "name": "Nigerian Billionaires Money Spending Simulator",
+    "image": "billionaires.png",
+    "description": "Lets you experience the lavish spending power of Nigeria's wealthiest individuals through an interactive simulator that tracks purchases and visualizes spending relative to vast fortunes.",
+    "link": "spend-nigerian-billionaires-money.netlify.app",
+  },
+  {
+    "name": "Budget Simulator",
+    "image": "simulator.png",
+    "description": "Distribute funds across movies, weddings, or startups and get funny AI predictions about the outcomes of your financial choices.",
+    "link": "https://budget-simulation.netlify.app/",
+  },
+  {
     "name": "Code Explainer",
     "image": "explainer.png",
     "description": "Powered by Mistral AI! It takes any code snippet and explains exactly what it does in plain English. Perfect for learning, code reviews, or understanding legacy code.",
-    "link": "https://github.com/LPMatrix/wave-portal",
+    "link": "code-explainer.netlify.app",
   },
   {
     "name": "Death Note",
