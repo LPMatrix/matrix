@@ -18,7 +18,7 @@
 	<meta charset="utf-8">
 	<link rel="icon" href="assets/img/android-chrome-512x512.png" type="image/x-icon">
 	<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 	<meta name="description" content="Sanusi Mubaraq portfolio">
 	<meta name="author" content="Sanusi Mubaraq">
 	<meta name="keywords" content="Sanusi, Mubaraq, software engineer, web developer">
@@ -64,6 +64,22 @@
 
   <!-- Alpine.js -->
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+  
+  <script>
+    // Add Tailwind custom configurations
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D0F18',
+            secondary: '#FBFBFB',
+            accent: '#3F8CFF',
+            textcolor: '#C9C9C9',
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body class="relative">
@@ -87,7 +103,7 @@
   <div class="cursor hidden md:block" id="cursor"></div>
   
   <!-- Grid Lines -->
-  <div class="grid-lines">
+  <div class="grid-lines hidden sm:block">
     <div class="grid-line grid-line-vertical" style="left: 20%;"></div>
     <div class="grid-line grid-line-vertical" style="left: 40%;"></div>
     <div class="grid-line grid-line-vertical" style="left: 60%;"></div>
@@ -105,12 +121,12 @@
   <div class="scroll-progress" id="scrollProgress"></div>
   
   <!-- Navigation Menu (Desktop) -->
-  <nav class="fixed top-0 left-0 w-full py-8 px-4 md:px-16 z-50 transition-all duration-300" id="mainNav">
+  <nav class="fixed top-0 left-0 w-full py-4 sm:py-6 md:py-8 px-4 md:px-16 z-50 transition-all duration-300" id="mainNav">
     <div class="container mx-auto">
       <div class="flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
+        <a href="#" class="text-xl sm:text-2xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
         
-        <div class="hidden md:flex space-x-8 items-center">
+        <div class="hidden md:flex space-x-4 lg:space-x-8 items-center">
           <a href="#about" class="nav-item hover:text-accent transition-colors duration-300">About</a>
           <a href="#resume" class="nav-item hover:text-accent transition-colors duration-300">Experience</a>
           <a href="#work" class="nav-item hover:text-accent transition-colors duration-300">Projects</a>
@@ -118,7 +134,7 @@
           <a href="https://hashnode.com/@matrix" target="_blank" class="nav-item hover:text-accent transition-colors duration-300">Articles</a>
         </div>
         
-        <!-- Mobile Menu Toggle -->
+        <!-- Mobile Menu Toggle - Simplified -->
         <div class="menu-toggle md:hidden" id="menuToggle">
           <span></span>
           <span></span>
@@ -130,60 +146,61 @@
   
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <div class="flex flex-col items-center space-y-8 text-3xl">
-      <a href="#about" class="mobile-nav-item" onclick="toggleMobileMenu()">About</a>
-      <a href="#resume" class="mobile-nav-item" onclick="toggleMobileMenu()">Experience</a>
-      <a href="#work" class="mobile-nav-item" onclick="toggleMobileMenu()">Projects</a>
-      <a href="#contact" class="mobile-nav-item" onclick="toggleMobileMenu()">Contact</a>
+    <div class="flex flex-col items-center space-y-6 text-xl sm:text-2xl md:text-3xl">
+      <a href="#about" class="mobile-nav-item" data-menu-link>About</a>
+      <a href="#resume" class="mobile-nav-item" data-menu-link>Experience</a>
+      <a href="#work" class="mobile-nav-item" data-menu-link>Projects</a>
+      <a href="#contact" class="mobile-nav-item" data-menu-link>Contact</a>
       <a href="https://hashnode.com/@matrix" target="_blank" class="mobile-nav-item">Articles</a>
       
-      <div class="flex space-x-6 mt-8">
-        <a href="https://twitter.com/sanusi_mubaraq" class="text-2xl social-icon" target="_blank">
+      <div class="flex space-x-6 mt-6">
+        <a href="https://twitter.com/sanusi_mubaraq" class="text-xl sm:text-2xl social-icon" target="_blank">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="https://ng.linkedin.com/in/mubaraq-sanusi-957665b5" class="text-2xl social-icon" target="_blank">
+        <a href="https://ng.linkedin.com/in/mubaraq-sanusi-957665b5" class="text-xl sm:text-2xl social-icon" target="_blank">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/LPMatrix" class="text-2xl social-icon" target="_blank">
+        <a href="https://github.com/LPMatrix" class="text-xl sm:text-2xl social-icon" target="_blank">
           <i class="fab fa-github"></i>
         </a>
       </div>
     </div>
   </div>
+
   
   <!-- Main Content Container -->
   <main class="smooth-scroll" id="smooth-content">
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-4 md:px-16 relative overflow-hidden" id="hero">
+    <section class="min-h-screen flex items-center justify-center px-4 md:px-16 py-12 sm:py-16 md:py-20 relative overflow-hidden" id="hero">
       <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-20 z-0"></div>
       
       <div class="container mx-auto relative z-10">
         <div class="flex flex-col md:flex-row items-center">
-          <div class="md:w-1/2 mb-10 md:mb-0">
+          <div class="w-full md:w-1/2 mb-10 md:mb-0">
             <p class="text-accent mb-2 stagger-fade-in">Hello, my name is</p>
-            <h1 class="text-5xl md:text-8xl font-bold mb-4 stagger-fade-in">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 stagger-fade-in">
               <span class="block">Sanusi</span>
               <span class="block text-gradient">Mubaraq</span>
             </h1>
-            <p class="text-text text-lg md:text-xl mb-8 max-w-xl stagger-fade-in">
+            <p class="text-text text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-xl stagger-fade-in">
               Software Engineer with 5 years of experience building scalable technology solutions, with a passion for web development and AI.
             </p>
-            <div class="flex space-x-4 stagger-fade-in">
-              <a href="#work" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300">View Projects</a>
-              <a href="#contact" class="bg-accent text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors duration-300">Contact Me</a>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:space-x-4 stagger-fade-in">
+              <a href="#work" class="w-full sm:w-auto text-center special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300">View Projects</a>
+              <a href="#contact" class="w-full sm:w-auto text-center bg-accent text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors duration-300 mt-3 sm:mt-0">Contact Me</a>
             </div>
           </div>
           
-          <div class="md:w-1/2 relative">
-            <div class="hero-image-container stagger-fade-in relative">
-              <img src="assets/img/me.jpg" alt="Sanusi Mubaraq" class="rounded-lg shadow-2xl w-full md:max-w-md mx-auto hero-image">
-              <div class="absolute -bottom-10 -left-10 w-32 h-32 border-l-4 border-b-4 border-accent"></div>
-              <div class="absolute -top-10 -right-10 w-32 h-32 border-t-4 border-r-4 border-accent"></div>
+          <div class="w-full md:w-1/2 relative mt-8 md:mt-0">
+            <div class="hero-image-container stagger-fade-in relative mx-auto max-w-xs sm:max-w-sm md:max-w-md">
+              <img src="assets/img/me.jpg" alt="Sanusi Mubaraq" class="rounded-lg shadow-2xl w-full hero-image">
+              <div class="absolute -bottom-4 sm:-bottom-8 md:-bottom-10 -left-4 sm:-left-8 md:-left-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border-l-2 md:border-l-4 border-b-2 md:border-b-4 border-accent"></div>
+              <div class="absolute -top-4 sm:-top-8 md:-top-10 -right-4 sm:-right-8 md:-right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border-t-2 md:border-t-4 border-r-2 md:border-r-4 border-accent"></div>
             </div>
           </div>
         </div>
         
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
           <a href="#about" class="text-accent">
             <i class="fas fa-chevron-down"></i>
           </a>
@@ -192,47 +209,47 @@
     </section>
     
     <!-- About Section -->
-    <section id="about" class="min-h-screen py-20 px-4 md:px-16 relative">
+    <section id="about" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
       <div class="container mx-auto">
-        <div class="flex flex-col mb-12">
+        <div class="flex flex-col mb-8 sm:mb-12">
           <span class="text-accent mb-2 overflow-hidden">
             <span class="reveal-text">
               <span>01 / WHO I AM</span>
             </span>
           </span>
-          <h2 class="section-heading parallax-text">ABOUT</h2>
+          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">ABOUT</h2>
         </div>
         
         <div class="flex flex-col md:flex-row">
           <div class="md:w-1/2 mb-10 md:mb-0 text-text">
-            <div class="max-w-xl space-y-6">
-              <p class="stagger-fade-in text-lg">
+            <div class="max-w-xl space-y-4 sm:space-y-6">
+              <p class="stagger-fade-in text-base sm:text-lg">
                 Sanusi Mubaraq is a Software Engineer with 5 years of successful experience in building scalable technology solutions. Mubaraq has a passion to lead and share knowledge. With an innate love for writing code to solve complex problems.
               </p>
-              <p class="stagger-fade-in text-lg">
+              <p class="stagger-fade-in text-base sm:text-lg">
                 I am constantly unlearning, relearning and recreating myself. I'm interested in building tools for the web.
               </p>
               
-              <div class="stagger-fade-in">
-                <a href="WebCV.pdf" target="_blank" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300 inline-flex items-center">
+              <div class="stagger-fade-in mt-6 sm:mt-8">
+                <a href="WebCV.pdf" target="_blank" class="special-button bg-transparent border border-accent text-accent px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:text-white transition-colors duration-300 inline-flex items-center">
                   <i class="fas fa-file-download mr-2"></i> DOWNLOAD CV
                 </a>
               </div>
             </div>
           </div>
           
-          <div class="md:w-1/2 pl-0 md:pl-12">
-            <h3 class="text-xl font-bold mb-6 text-accent stagger-fade-in">My Skills</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-fade-in">
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">JavaScript</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Python</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">CSS</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Laravel</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">VueJS</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">DigitalOcean</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">AI Agents & RAG</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">LLM Integration</div>
-              <div class="skill-pill bg-gray-800 px-4 py-3 rounded-lg text-center">Prompt Engineering</div>
+          <div class="md:w-1/2 pl-0 md:pl-8 lg:pl-12">
+            <h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-accent stagger-fade-in">My Skills</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 stagger-fade-in">
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">JavaScript</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Python</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">CSS</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Laravel</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">VueJS</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">DigitalOcean</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">AI Agents & RAG</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">LLM Integration</div>
+              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Prompt Engineering</div>
             </div>
           </div>
         </div>
@@ -240,72 +257,72 @@
     </section>
     
     <!-- Resume Section -->
-    <section id="resume" class="min-h-screen py-20 px-4 md:px-16 relative">
+    <section id="resume" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
       <div class="container mx-auto">
-        <div class="flex flex-col mb-12">
+        <div class="flex flex-col mb-8 sm:mb-12">
           <span class="text-accent mb-2 overflow-hidden">
             <span class="reveal-text">
               <span>02 / MY JOURNEY</span>
             </span>
           </span>
-          <h2 class="section-heading parallax-text">EXPERIENCE</h2>
+          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">EXPERIENCE</h2>
         </div>
         
-        <div class="flex flex-col md:flex-row mb-20">
-          <div class="md:w-1/3 mb-8 md:mb-0">
-            <h3 class="text-xl font-bold text-accent stagger-fade-in">Education</h3>
+        <div class="flex flex-col md:flex-row mb-12 sm:mb-16 md:mb-20">
+          <div class="md:w-1/3 mb-6 md:mb-0">
+            <h3 class="text-lg sm:text-xl font-bold text-accent stagger-fade-in">Education</h3>
           </div>
           
           <div class="md:w-2/3">
-            <div class="experience-item pb-10 stagger-fade-in">
-              <h3 class="text-xl font-bold">BSc. Computer Science</h3>
+            <div class="experience-item pb-6 sm:pb-10 stagger-fade-in">
+              <h3 class="text-lg sm:text-xl font-bold">BSc. Computer Science</h3>
               <p class="text-accent">University of Ilorin</p>
               <p class="text-text">4 Year Course</p>
-              <p class="text-sm text-gray-500 mt-2">GRADUATED 2018</p>
+              <p class="text-xs sm:text-sm text-gray-500 mt-2">GRADUATED 2018</p>
             </div>
           </div>
         </div>
         
         <div class="flex flex-col md:flex-row">
-          <div class="md:w-1/3 mb-8 md:mb-0">
-            <h3 class="text-xl font-bold text-accent stagger-fade-in">Work</h3>
+          <div class="md:w-1/3 mb-6 md:mb-0">
+            <h3 class="text-lg sm:text-xl font-bold text-accent stagger-fade-in">Work</h3>
           </div>
           
           <div class="md:w-2/3">
-			<div class="experience-item pb-10 stagger-fade-in">
-				<h3 class="text-xl font-bold">Software Engineer</h3>
+			<div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
+				<h3 class="text-lg sm:text-xl font-bold">Software Engineer</h3>
 				<p class="text-accent">Abango Technologies.</p>
-				<p class="text-sm text-gray-500 mb-3">JUNE 2022 - PRESENT</p>
-				<ul class="text-text space-y-2">
+				<p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">JUNE 2022 - PRESENT</p>
+				<ul class="text-text space-y-1 sm:space-y-2 text-sm sm:text-base">
 				  <li>• Developed highly secure APIs for gift card transactions, payment processing, bill payment, and crypto trading, resulting in a 50% decrease in security incidents and a 30% increase in successful transactions.</li>
 				  <li>• Scaled backend infrastructure to meet growing user demand and traffic.</li>
 				  <li>• Implemented CI/CD pipelines, reducing manual deployment efforts by 35% and enabling faster feature releases.</li>
 				</ul>
 			  </div>
 
-            <div class="experience-item pb-10 stagger-fade-in">
-              <h3 class="text-xl font-bold">IoT Developer</h3>
+            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
+              <h3 class="text-lg sm:text-xl font-bold">IoT Developer</h3>
               <p class="text-accent">ICE.</p>
-              <p class="text-sm text-gray-500 mb-3">JUNE 2021 - JUNE 2022</p>
-              <ul class="text-text space-y-2">
+              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">JUNE 2021 - JUNE 2022</p>
+              <ul class="text-text space-y-1 sm:space-y-2 text-sm sm:text-base">
                 <li>• Work with Data Scientists on large, complex energy data sets, analyzing user needs and working as service designers.</li>
                 <li>• Creating and developing devices, sensors and software.</li>
                 <li>• Designing, coding and testing features of IoT devices.</li>
               </ul>
             </div>
             
-            <div class="experience-item pb-10 stagger-fade-in">
-              <h3 class="text-xl font-bold">Python Instructor</h3>
+            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
+              <h3 class="text-lg sm:text-xl font-bold">Python Instructor</h3>
               <p class="text-accent">CoLab.</p>
-              <p class="text-sm text-gray-500 mb-3">SEPTEMBER 2018 - OCTOBER 2021</p>
-              <p class="text-text">I Worked on programmes to train people of all ages to become software engineers through lectures and project based learning.</p>
+              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">SEPTEMBER 2018 - OCTOBER 2021</p>
+              <p class="text-text text-sm sm:text-base">I Worked on programmes to train people of all ages to become software engineers through lectures and project based learning.</p>
             </div>
             
-            <div class="experience-item pb-10 stagger-fade-in">
-              <h3 class="text-xl font-bold">Software Engineer</h3>
+            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
+              <h3 class="text-lg sm:text-xl font-bold">Software Engineer</h3>
               <p class="text-accent">Freelance</p>
-              <p class="text-sm text-gray-500 mb-3">DECEMBER 2018 - OCTOBER 2021</p>
-              <p class="text-text">I am a freelancer building, revamping, managing software solutions for clients across the globe.</p>
+              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">DECEMBER 2018 - OCTOBER 2021</p>
+              <p class="text-text text-sm sm:text-base">I am a freelancer building, revamping, managing software solutions for clients across the globe.</p>
             </div>
           </div>
         </div>
@@ -313,35 +330,34 @@
     </section>
     
     <!-- Portfolio Section -->
-    <section id="work" class="min-h-screen py-20 px-4 md:px-16 relative">
+    <section id="work" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
 		<div class="container mx-auto">
-		  <div class="flex flex-col mb-12">
+		  <div class="flex flex-col mb-8 sm:mb-12">
 			<span class="text-accent mb-2 overflow-hidden">
 			  <span class="reveal-text">
 				<span>03 / MY WORK</span>
 			  </span>
 			</span>
-			<h2 class="section-heading parallax-text">PROJECTS</h2>
+			<h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">PROJECTS</h2>
 		  </div>
 		  
 		  <!-- Add a filter system for projects -->
-		  <div class="mb-10 flex flex-wrap justify-center gap-4 filter-container">
-			<button class="filter-btn active px-4 py-2 rounded-full border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300" data-filter="all">All</button>
-			<button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-text hover:border-accent hover:text-accent transition-all duration-300" data-filter="web">Web</button>
-			<button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-text hover:border-accent hover:text-accent transition-all duration-300" data-filter="mobile">Backend</button>
-			<button class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-text hover:border-accent hover:text-accent transition-all duration-300" data-filter="ai">AI</button>
+		  <div class="mb-6 sm:mb-10 flex flex-wrap justify-center gap-2 sm:gap-4 filter-container">
+			<button class="filter-btn active px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-full border border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300" data-filter="all">All</button>
+			<button class="filter-btn px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-full border border-gray-700 text-text hover:border-accent hover:text-accent transition-all duration-300" data-filter="web">Web</button>
+			<button class="filter-btn px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-full border border-gray-700 text-text hover:border-accent hover:text-accent transition-all duration-300" data-filter="mobile">Backend</button>
+			<button class="filter-btn px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-full border border-gray-700 text-text hover:border-accent hover:text-accent transition-all duration-300" data-filter="ai">AI</button>
 		  </div>
 		  
 		  <!-- Update the project grid -->
-		  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 projects-grid" x-data="{ items: window.projects || [] }">
+		  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 projects-grid" x-data="{ items: window.projects || [] }">
 			<template x-for="(item, index) in items" :key="index">
-			  <div class="work-card h-96 rounded-lg overflow-hidden shadow-lg stagger-fade-in" :data-category="item.category || 'web'">
+			  <div class="work-card h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden shadow-lg stagger-fade-in" :data-category="item.category || 'web'">
 				<img class="w-full h-full object-cover" :src="`assets/img/${item.image}`" :alt="item.name">
 				<div class="work-card-overlay">
-				  <h3 class="text-xl font-bold mb-2" x-text="item.name"></h3>
-				  <p class="text-center mb-4 px-4" x-text="item.description"></p>
-				  <!-- <button class="view-project-btn px-4 py-2 border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300">View Details</button> -->
-				  <a :href="item.link" target="_blank" class="view-project-btn px-4 py-2 border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300">View</a>
+				  <h3 class="text-lg sm:text-xl font-bold mb-1 sm:mb-2" x-text="item.name"></h3>
+				  <p class="text-center mb-3 sm:mb-4 px-4 text-sm sm:text-base" x-text="item.description"></p>
+				  <a :href="item.link" target="_blank" class="view-project-btn px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300">View</a>
 				</div>
 			  </div>
 			</template>
@@ -350,90 +366,90 @@
 	  </section>
     
     <!-- Contact Section -->
-    <section id="contact" class="min-h-screen py-20 px-4 md:px-16 relative">
+    <section id="contact" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
       <div class="container mx-auto">
-        <div class="flex flex-col mb-12">
+        <div class="flex flex-col mb-8 sm:mb-12">
           <span class="text-accent mb-2 overflow-hidden">
             <span class="reveal-text">
               <span>04 / GET IN TOUCH</span>
             </span>
           </span>
-          <h2 class="section-heading parallax-text">CONTACT</h2>
+          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">CONTACT</h2>
         </div>
         
         <div class="flex flex-col md:flex-row">
           <div class="md:w-1/2 mb-10 md:mb-0">
-            <form class="space-y-6 stagger-fade-in">
+            <form class="space-y-4 sm:space-y-6 stagger-fade-in">
               <div>
                 <label for="name" class="block text-sm text-text mb-2">Your Name</label>
-                <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300">
+                <input type="text" id="name" class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 text-base">
               </div>
               
               <div>
                 <label for="email" class="block text-sm text-text mb-2">Your Email</label>
-                <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300">
+                <input type="email" id="email" class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 text-base">
               </div>
               
               <div>
                 <label for="message" class="block text-sm text-text mb-2">Your Message</label>
-                <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300"></textarea>
+                <textarea id="message" rows="4" class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 text-base"></textarea>
               </div>
               
-              <button type="submit" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300">
+              <button type="submit" class="w-full sm:w-auto special-button bg-transparent border border-accent text-accent px-4 py-2 sm:px-6 sm:py-3 rounded-full hover:text-white transition-colors duration-300">
                 Send Message <i class="fas fa-paper-plane ml-2"></i>
               </button>
             </form>
           </div>
           
-          <div class="md:w-1/2 md:pl-12">
-            <div class="space-y-10">
+          <div class="md:w-1/2 md:pl-8 lg:pl-12">
+            <div class="space-y-6 sm:space-y-10">
               <div class="stagger-fade-in">
-                <h3 class="text-xl font-bold mb-4 text-accent">Contact Information</h3>
-                <div class="space-y-4">
+                <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-accent">Contact Information</h3>
+                <div class="space-y-3 sm:space-y-4">
                   <div class="flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                      <i class="fas fa-envelope text-accent"></i>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 sm:mr-4">
+                      <i class="fas fa-envelope text-accent text-sm sm:text-base"></i>
                     </div>
                     <div>
-                      <p class="text-sm text-text">Email</p>
-                      <p>mubaraqsanusi908@gmail.com</p>
+                      <p class="text-xs sm:text-sm text-text">Email</p>
+                      <p class="text-sm sm:text-base break-all">mubaraqsanusi908@gmail.com</p>
                     </div>
                   </div>
                   
                   <div class="flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                      <i class="fas fa-map-marker-alt text-accent"></i>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 sm:mr-4">
+                      <i class="fas fa-map-marker-alt text-accent text-sm sm:text-base"></i>
                     </div>
                     <div>
-                      <p class="text-sm text-text">Address</p>
-                      <p>CoLab</p>
-                      <p>4 Barnawa Close, Off Challawa Crescent,</p>
-                      <p>Barnawa, Kaduna</p>
+                      <p class="text-xs sm:text-sm text-text">Address</p>
+                      <p class="text-sm sm:text-base">CoLab</p>
+					  <p class="text-sm sm:text-base">4 Barnawa Close, Off Challawa Crescent,</p>
+                      <p class="text-sm sm:text-base">Barnawa, Kaduna</p>
                     </div>
                   </div>
                   
                   <div class="flex items-start">
-                    <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                      <i class="fas fa-phone-alt text-accent"></i>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 sm:mr-4">
+                      <i class="fas fa-phone-alt text-accent text-sm sm:text-base"></i>
                     </div>
                     <div>
-                      <p class="text-sm text-text">Phone</p>
-                      <p>+234 8132554349</p>
+                      <p class="text-xs sm:text-sm text-text">Phone</p>
+                      <p class="text-sm sm:text-base">+234 8132554349</p>
                     </div>
                   </div>
                 </div>
               </div>
               
               <div class="stagger-fade-in">
-                <h3 class="text-xl font-bold mb-4 text-accent">Social Links</h3>
-                <div class="flex space-x-6">
-                  <a href="https://x.com/WeirdMatrix" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
+                <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-accent">Social Links</h3>
+                <div class="flex space-x-4 sm:space-x-6">
+                  <a href="https://x.com/WeirdMatrix" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
                     <i class="fab fa-twitter"></i>
                   </a>
-                  <a href="https://www.linkedin.com/in/sirematrix/" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
+                  <a href="https://www.linkedin.com/in/sirematrix/" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="https://github.com/LPMatrix" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
+                  <a href="https://github.com/LPMatrix" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank">
                     <i class="fab fa-github"></i>
                   </a>
                 </div>
@@ -446,27 +462,28 @@
   </main>
   
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-10 text-center relative z-10">
+  <footer class="bg-gray-900 text-white py-8 sm:py-10 text-center relative z-10">
     <div class="container mx-auto px-4">
-      <div class="mb-8">
-        <a href="#" class="text-3xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
+      <div class="mb-6 sm:mb-8">
+        <a href="#" class="text-2xl sm:text-3xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
       </div>
-      <div class="max-w-lg mx-auto mb-8">
-        <p class="text-text">Building digital products, brands, and experiences that people love.</p>
+      <div class="max-w-xs sm:max-w-sm md:max-w-lg mx-auto mb-6 sm:mb-8">
+        <p class="text-text text-sm sm:text-base">Building digital products, brands, and experiences that people love.</p>
       </div>
-      <div class="flex justify-center space-x-6 mb-8">
-        <a href="https://x.com/WeirdMatrix" class="text-xl social-icon" target="_blank">
+      <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
+        <a href="https://x.com/WeirdMatrix" class="text-lg sm:text-xl social-icon" target="_blank">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="https://www.linkedin.com/in/sirematrix/" class="text-xl social-icon" target="_blank">
+        <a href="https://www.linkedin.com/in/sirematrix/" class="text-lg sm:text-xl social-icon" target="_blank">
           <i class="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://github.com/LPMatrix" class="text-xl social-icon" target="_blank">
+        <a href="https://github.com/LPMatrix" class="text-lg sm:text-xl social-icon" target="_blank">
           <i class="fab fa-github"></i>
         </a>
       </div>
-      <p class="text-sm text-text">Created with <span class="text-accent">❤️</span> © 2025</p>
+      <p class="text-xs sm:text-sm text-text">Created with <span class="text-accent">❤️</span> © 2025</p>
     </div>
   </footer>
+
 </body>
 </html>

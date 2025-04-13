@@ -26,34 +26,59 @@ window.addEventListener('load', () => {
   });
 });
 
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-
-function toggleMobileMenu() {
-  menuToggle.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
-  document.body.classList.toggle('overflow-hidden');
-  
-  // Animate the mobile menu items when opened
-  if (mobileMenu.classList.contains('active')) {
-    anime({
-      targets: '.mobile-nav-item',
-      translateY: [20, 0],
-      opacity: [0, 1],
-      delay: anime.stagger(100),
-      easing: 'easeOutQuad',
-      duration: 600
-    });
-  }
-}
-
-menuToggle.addEventListener('click', toggleMobileMenu);
-
-// Add click event to mobile menu links
-document.querySelectorAll('.mobile-nav-item').forEach(item => {
-  item.addEventListener('click', toggleMobileMenu);
-});
+// // Mobile Menu Toggle
+const menuToggle = document.getElementById("menuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuLinks = document.querySelectorAll('[data-menu-link]');
+      
+      // Toggle the mobile menu
+      function toggleMobileMenu() {
+        menuToggle.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+        
+        // Prevent scrolling when menu is open
+        if (mobileMenu.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
+      
+      // Event listener for menu toggle
+      menuToggle.addEventListener("click", toggleMobileMenu);
+      
+      // Close menu when clicking on a link
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          toggleMobileMenu();
+        });
+      });
+      
+      // iOS vh unit fix
+      function setVhProperty() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      setVhProperty();
+      window.addEventListener('resize', setVhProperty);
+      
+      // Disable cursor on touch devices
+      if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        const cursor = document.getElementById('cursor');
+        if (cursor) {
+          cursor.style.display = 'none';
+        }
+      }
+      
+      // Close the menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (mobileMenu.classList.contains('active') && 
+            !mobileMenu.contains(event.target) && 
+            !menuToggle.contains(event.target)) {
+          toggleMobileMenu();
+        }
+      });
 
 // Custom Cursor
 const cursor = document.getElementById('cursor');
