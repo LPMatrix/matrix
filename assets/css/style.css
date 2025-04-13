@@ -76,6 +76,191 @@ a:hover {
   text-decoration: none !important;
 }
 
+/* Add these to your styles.css file */
+
+/* Animation-ready elements with better initial states */
+.stagger-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+.reveal-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.reveal-text span {
+  display: block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+/* Smoother transitions for work cards */
+.work-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.work-card img {
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.work-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  will-change: opacity;
+}
+
+/* Particle effects enhancement */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.4;
+  transition: opacity 0.5s ease;
+}
+
+/* Enhanced cursor */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform, width, height;
+  filter: blur(0);
+  transition: filter 0.3s ease, background-color 0.3s ease;
+}
+
+.cursor.active {
+  filter: blur(2px);
+  background-color: rgba(63, 140, 255, 0.8);
+}
+
+/* Enhanced loader animation */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  will-change: opacity;
+}
+
+.loader-text {
+  font-size: 5rem;
+  font-weight: 800;
+  overflow: hidden;
+}
+
+.loader-text span {
+  display: inline-block;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.loader-progress {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent);
+  will-change: width;
+}
+
+/* Hover states optimized for anime.js */
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.skill-pill:hover {
+  background-color: rgba(63, 140, 255, 0.2);
+}
+
+.social-icon:hover {
+  color: var(--accent);
+}
+
+/* Improved mobile menu animation */
+.mobile-nav-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Experience timeline improvements */
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.experience-item:hover::before {
+  transform: scale(1.5);
+  background-color: var(--accent);
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .stagger-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .reveal-text span {
+    transform: translateY(0);
+  }
+  
+  #particle-canvas {
+    display: none;
+  }
+  
+  .cursor {
+    display: none;
+  }
+}
+
 .scrolltop {
   display: none;
   position: fixed;
