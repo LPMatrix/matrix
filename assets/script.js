@@ -516,7 +516,7 @@ if (contactForm) {
         color: '#ffffff',
         borderColor: '#10B981',
         complete: function() {
-          submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> Message Sent!';
+          submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> Consultation Requested!';
         }
       })
       .add({
@@ -538,7 +538,7 @@ if (contactForm) {
           duration: 500,
           easing: 'easeOutQuad',
           complete: function() {
-            submitButton.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+            submitButton.innerHTML = 'Request Consultation <i class="fas fa-paper-plane ml-2"></i>';
           }
         });
       }, 3000);

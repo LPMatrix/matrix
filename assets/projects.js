@@ -1,69 +1,62 @@
 window.projects = [
   {
-    "name": "Nigerian Billionaires Money Spending Simulator",
-    "image": "billionaires.png",
-    "description": "Lets you experience the lavish spending power of Nigeria's wealthiest individuals through an interactive simulator that tracks purchases and visualizes spending relative to vast fortunes.",
-    "link": "spend-nigerian-billionaires-money.netlify.app",
+    name: "Notion MCP Research Pipeline",
+    link: "https://github.com/LPMatrix/notion-mcp",
+    kicker: "Flagship AI Workflow",
+    summary:
+      "A research system designed to reduce hallucination risk by combining LLM expansion, live web search, adversarial checking, and structured knowledge capture in Notion.",
+    challenge:
+      "Teams need faster research workflows without sacrificing accuracy, provenance, or confidence in what the model returns.",
+    outcome:
+      "Created a workflow that prioritizes verification and structured outputs, showing how AI research tooling can be made more dependable for real work.",
+    tags: ["LLM workflows", "Research automation", "Fact-checking", "MCP", "Notion"]
   },
   {
-    "name": "Budget Simulator",
-    "image": "simulator.png",
-    "description": "Distribute funds across movies, weddings, or startups and get funny AI predictions about the outcomes of your financial choices.",
-    "link": "https://budget-simulation.netlify.app/",
+    name: "Code Explainer",
+    link: "https://code-explainer.netlify.app",
+    kicker: "LLM Developer Tooling",
+    summary:
+      "An explanation interface powered by Mistral AI that turns unfamiliar code into plain-English guidance for onboarding, reviews, and legacy maintenance.",
+    challenge:
+      "Developers often lose time trying to understand old codebases, messy snippets, or unfamiliar patterns before they can make progress.",
+    outcome:
+      "Built a practical AI utility that shortens comprehension time and makes developer workflows more accessible to teams with mixed experience levels.",
+    tags: ["Mistral AI", "Developer tools", "Code understanding", "UX"]
   },
   {
-    "name": "Code Explainer",
-    "image": "explainer.png",
-    "description": "Powered by Mistral AI! It takes any code snippet and explains exactly what it does in plain English. Perfect for learning, code reviews, or understanding legacy code.",
-    "link": "code-explainer.netlify.app",
+    name: "Budget Simulator",
+    link: "https://budget-simulation.netlify.app/",
+    kicker: "Interactive AI Product Experiment",
+    summary:
+      "A playful budgeting experience that uses AI-generated responses to turn user choices into personalized scenario-based outcomes.",
+    challenge:
+      "Interactive products need more than static calculators. They need feedback that feels dynamic, personal, and memorable.",
+    outcome:
+      "Turned a lightweight budgeting tool into an engaging product concept that demonstrates how AI can deepen interaction, not just automate tasks.",
+    tags: ["Interactive products", "AI UX", "Consumer tools"]
   },
   {
-    "name": "Death Note",
-    "image": "deathnote.png",
-    "description": "A tribute and log of beloved products and services that failed in Nigeria.",
-    "link": "https://lpmatrix.github.io/sleeping-legacies/",
+    name: "Nigerian Billionaires Money Spending Simulator",
+    link: "https://spend-nigerian-billionaires-money.netlify.app",
+    kicker: "Viral Product Experience",
+    summary:
+      "A high-engagement simulator that translates massive wealth figures into a tactile, visual spending experience people can instantly understand.",
+    challenge:
+      "Big numbers are hard to feel. Consumer products need better storytelling to make abstract data emotionally legible.",
+    outcome:
+      "Designed a simple but compelling product that combines data storytelling, interaction design, and shareability.",
+    tags: ["Data storytelling", "Consumer web", "Interactive design"]
   },
   {
-    "name": "Cartie",
-    "image": "cartie.png",
-    "description": "A clean shopping cart implementation for Laravel.",
-    "link": "https://github.com/LPMatrix/cartie",
-  },
-  {
-    "name": "Mind",
-    "image": "mind.png",
-    "description": "Mind is a Chrome extension that let you access self help tips and other fun stuff",
-    "link": "https://github.com/LPMatrix/Mind",
-  },
-  {
-    "name": "ShellOps",
-    "image": "do.jpg",
-    "description": "A tool for setting up your deployment stack quickly on cloud infrastructures like Digitalocean, AWS etc.",
-    "link": "https://github.com/LPMatrix/ShellOps",
-  },
-  {
-    "name": "Wordroute",
-    "image": "wordroute.png",
-    "description": "Gets you the routes rom one point to another.",
-    "link": "https://lpmatrix.github.io/wordroute/",
-  },
-  {
-    "name": "Iqmah",
-    "image": "iqmah.png",
-    "description": " The main aim of this website is to spread the true message of Islam to the world.",
-    "link": "http://iqmah.mubaraq.com.ng/",
-  },
-  {
-    "name": "muzik",
-    "image": "muzikkal.png",
-    "description": " A minimal music player app with sveltejs.",
-    "link": "https://muzikkal.netlify.app/",
-  },
-  {
-    "name": "Paletteer",
-    "image": "paletteer.png",
-    "description": " A tool to help you get the colour palette from images you absolutely love.",
-    "link": "https://paletteer.netlify.app/",
-  },
-  
-]
+    name: "Death Note",
+    link: "https://lpmatrix.github.io/sleeping-legacies/",
+    kicker: "Editorial Product Storytelling",
+    summary:
+      "A reflective web experience documenting failed or discontinued Nigerian products and services through a clear, memorable narrative format.",
+    challenge:
+      "Archives and product retrospectives often feel dry, even when the stories behind them are culturally rich and emotionally resonant.",
+    outcome:
+      "Built an editorial experience that shows range beyond AI work while still reinforcing product thinking and narrative design.",
+    tags: ["Editorial design", "Cultural products", "Storytelling"]
+  }
+];

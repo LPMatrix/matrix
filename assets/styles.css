@@ -124,6 +124,168 @@
   .work-card:hover .work-card-overlay {
     opacity: 1;
   }
+
+  .case-study-header {
+    display: grid;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 3rem;
+  }
+
+  .case-study-intro {
+    max-width: 38rem;
+    justify-self: end;
+  }
+
+  .case-study-lead {
+    color: var(--secondary);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-study-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .case-study-signals span {
+    padding: 0.55rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .case-study-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .case-study-card {
+    position: relative;
+    display: grid;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+      rgba(8, 11, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+  }
+
+  .case-study-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(63, 140, 255, 0.15), transparent 42%),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.02), transparent 65%);
+    z-index: -1;
+  }
+
+  .case-study-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(63, 140, 255, 0.35);
+  }
+
+  .case-study-kicker {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(7, 10, 18, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--secondary);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-study-body {
+    display: grid;
+    gap: 1.1rem;
+    padding: 1.5rem;
+  }
+
+  .case-study-title {
+    font-size: clamp(1.35rem, 2vw, 2.1rem);
+    line-height: 1.05;
+  }
+
+  .case-study-summary {
+    color: var(--secondary);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    max-width: 52ch;
+  }
+
+  .case-study-notes {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .case-study-note {
+    display: grid;
+    gap: 0.4rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .case-study-note span {
+    color: var(--accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .case-study-note p {
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 0.98rem;
+  }
+
+  .case-study-footer {
+    display: grid;
+    gap: 1rem;
+    align-items: start;
+    padding-top: 0.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .case-study-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .case-study-tag {
+    color: var(--secondary);
+    font-size: 0.82rem;
+    padding: 0.35rem 0.6rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .case-study-link {
+    width: fit-content;
+    color: var(--secondary);
+    text-decoration: none;
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .case-study-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
   
   .skill-pill {
     position: relative;
@@ -404,6 +566,39 @@
     
     .hero-image {
       clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .case-study-header {
+      grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+    }
+
+    .case-study-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .case-study-card {
+      grid-column: span 3;
+    }
+
+    .case-study-card-featured {
+      grid-column: span 4;
+      min-height: 0;
+    }
+
+    .case-study-card-featured .case-study-body {
+      padding: 1.85rem;
+      align-content: start;
+    }
+
+    .case-study-card-wide {
+      grid-column: span 2;
+    }
+
+    .case-study-footer {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
     }
   }
   
