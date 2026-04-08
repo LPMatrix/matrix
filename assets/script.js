@@ -29,6 +29,7 @@ window.addEventListener('load', () => {
 // // Mobile Menu Toggle
 const menuToggle = document.getElementById("menuToggle");
       const mobileMenu = document.getElementById("mobileMenu");
+      const mobileMenuClose = document.getElementById("mobileMenuClose");
       const menuLinks = document.querySelectorAll('[data-menu-link]');
       
       // Toggle the mobile menu
@@ -46,6 +47,10 @@ const menuToggle = document.getElementById("menuToggle");
       
       // Event listener for menu toggle
       menuToggle.addEventListener("click", toggleMobileMenu);
+
+      if (mobileMenuClose) {
+        mobileMenuClose.addEventListener("click", toggleMobileMenu);
+      }
       
       // Close menu when clicking on a link
       menuLinks.forEach(link => {

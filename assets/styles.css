@@ -438,6 +438,36 @@
     justify-content: center;
     transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
   }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.25rem;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .mobile-menu-close span {
+    position: absolute;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--secondary);
+  }
+
+  .mobile-menu-close span:first-child {
+    transform: rotate(45deg);
+  }
+
+  .mobile-menu-close span:last-child {
+    transform: rotate(-45deg);
+  }
   
   .mobile-menu.active {
     right: 0;
