@@ -428,6 +428,24 @@ function initSmoothScroll() {
   }
 }
 
+function showFormError(submitButton) {
+  submitButton.innerHTML = 'Something went wrong — try again <i class="fas fa-exclamation ml-2"></i>';
+  anime({ targets: submitButton, borderColor: '#ff3333', color: '#ff3333', duration: 400, easing: 'easeOutQuad' });
+  setTimeout(() => {
+    anime({
+      targets: submitButton,
+      backgroundColor: 'rgba(0,0,0,0)',
+      color: '#3F8CFF',
+      borderColor: '#3F8CFF',
+      duration: 500,
+      easing: 'easeOutQuad',
+      complete: function() {
+        submitButton.innerHTML = 'Request Consultation <i class="fas fa-paper-plane ml-2"></i>';
+      }
+    });
+  }, 3000);
+}
+
 // Form validation and submission
 const contactForm = document.querySelector('#contact form');
 if (contactForm) {
@@ -481,46 +499,63 @@ if (contactForm) {
     }
     
     if (isValid) {
-      // Animated success state
       const submitButton = contactForm.querySelector('button[type="submit"]');
-      
-      anime.timeline({
-        duration: 400,
-        easing: 'easeOutQuad'
+
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'e0b97764-7c83-4b1a-b9d1-7e41a3efef91',
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          message: messageInput.value.trim()
+        })
       })
-      .add({
-        targets: submitButton,
-        scale: [1, 0.95, 1.05, 1],
-        backgroundColor: '#10B981',
-        color: '#ffffff',
-        borderColor: '#10B981',
-        complete: function() {
-          submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> Consultation Requested!';
+      .then(res => res.json())
+      .then(data => {
+        submitButton.disabled = false;
+        if (data.success) {
+          anime.timeline({ duration: 400, easing: 'easeOutQuad' })
+            .add({
+              targets: submitButton,
+              scale: [1, 0.95, 1.05, 1],
+              backgroundColor: '#10B981',
+              color: '#ffffff',
+              borderColor: '#10B981',
+              complete: function() {
+                submitButton.innerHTML = '<i class="fas fa-check mr-2"></i> Consultation Requested!';
+              }
+            })
+            .add({
+              targets: [nameInput, emailInput, messageInput],
+              opacity: [1, 0.7, 1],
+              duration: 1000
+            });
+          contactForm.reset();
+          setTimeout(() => {
+            anime({
+              targets: submitButton,
+              backgroundColor: 'rgba(0,0,0,0)',
+              color: '#3F8CFF',
+              borderColor: '#3F8CFF',
+              duration: 500,
+              easing: 'easeOutQuad',
+              complete: function() {
+                submitButton.innerHTML = 'Request Consultation <i class="fas fa-paper-plane ml-2"></i>';
+              }
+            });
+          }, 3000);
+        } else {
+          showFormError(submitButton);
         }
       })
-      .add({
-        targets: [nameInput, emailInput, messageInput],
-        opacity: [1, 0.7, 1],
-        duration: 1000
-      })
-      
-      // Reset form
-      contactForm.reset();
-      
-      // Reset button after delay
-      setTimeout(() => {
-        anime({
-          targets: submitButton,
-          backgroundColor: 'rgba(0,0,0,0)',
-          color: '#3F8CFF',
-          borderColor: '#3F8CFF',
-          duration: 500,
-          easing: 'easeOutQuad',
-          complete: function() {
-            submitButton.innerHTML = 'Request Consultation <i class="fas fa-paper-plane ml-2"></i>';
-          }
-        });
-      }, 3000);
+      .catch(() => {
+        submitButton.disabled = false;
+        showFormError(submitButton);
+      });
     }
   });
 }

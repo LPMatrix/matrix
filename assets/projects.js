@@ -24,39 +24,39 @@ window.projects = [
     tags: ["Mistral AI", "Developer tools", "Code understanding", "UX"]
   },
   {
-    name: "Budget Simulator",
-    link: "https://budget-simulation.netlify.app/",
-    kicker: "Interactive AI Product Experiment",
+    name: "TickerNG",
+    link: "https://tickerng.com",
+    kicker: "Multi-Agent Financial Intelligence",
     summary:
-      "A playful budgeting experience that uses AI-generated responses to turn user choices into personalized scenario-based outcomes.",
+      "A stock research tool for the Nigerian Exchange built on a multi-agent architecture — specialist agents covering fundamentals, news, macro, sentiment, and liquidity feed a synthesis agent that produces a unified research view.",
     challenge:
-      "Interactive products need more than static calculators. They need feedback that feels dynamic, personal, and memorable.",
+      "Nigerian equity research is fragmented, slow, and mostly inaccessible to retail investors who lack Bloomberg terminals or analyst relationships.",
     outcome:
-      "Turned a lightweight budgeting tool into an engaging product concept that demonstrates how AI can deepen interaction, not just automate tasks.",
-    tags: ["Interactive products", "AI UX", "Consumer tools"]
+      "Shipped a production system that demonstrates how multi-agent LLM architectures can be applied to thin-data markets where no mature tooling exists.",
+    tags: ["Multi-agent systems", "LLM orchestration", "Financial intelligence", "NGX", "RAG"]
   },
   {
-    name: "Nigerian Billionaires Money Spending Simulator",
-    link: "https://spend-nigerian-billionaires-money.netlify.app",
-    kicker: "Viral Product Experience",
+    name: "SpecOS",
+    link: "#",
+    kicker: "AI-Powered Product Specification",
     summary:
-      "A high-engagement simulator that translates massive wealth figures into a tactile, visual spending experience people can instantly understand.",
+      "A product spec tool that turns rough problem statements into structured, defensible specifications — designed for product teams that need to move fast without losing rigor.",
     challenge:
-      "Big numbers are hard to feel. Consumer products need better storytelling to make abstract data emotionally legible.",
+      "Most teams write specs too late, too vaguely, or not at all. The cost shows up in build cycles, not planning sessions.",
     outcome:
-      "Designed a simple but compelling product that combines data storytelling, interaction design, and shareability.",
-    tags: ["Data storytelling", "Consumer web", "Interactive design"]
+      "Built and stress-tested a working beta that reframes spec quality as a competitive advantage, not a bureaucratic step.",
+    tags: ["LLM products", "Product tooling", "Prompt engineering", "Developer tools"]
   },
   {
-    name: "Death Note",
-    link: "https://lpmatrix.github.io/sleeping-legacies/",
-    kicker: "Editorial Product Storytelling",
+    name: "Afrigate",
+    link: "https://github.com/LPMatrix/afrigate",
+    kicker: "Multi-Agent Trade Compliance Architecture",
     summary:
-      "A reflective web experience documenting failed or discontinued Nigerian products and services through a clear, memorable narrative format.",
+      "An autonomous agent swarm that handles African cross-border trade compliance — HS code classification, document validation, and self-correcting retry logic — orchestrated with LangGraph.",
     challenge:
-      "Archives and product retrospectives often feel dry, even when the stories behind them are culturally rich and emotionally resonant.",
+      "African exporters navigate fragmented, frequently changing compliance rules across countries. The cost of getting it wrong — wrong HS codes, missing certificates — falls entirely on the exporter.",
     outcome:
-      "Built an editorial experience that shows range beyond AI work while still reinforcing product thinking and narrative design.",
-    tags: ["Editorial design", "Cultural products", "Storytelling"]
-  }
+      "Designed and built a deterministic multi-agent architecture with a self-correction loop, structured state management, and a clear path to RAG and LLM integration in Phase 2.",
+    tags: ["LangGraph", "Multi-agent systems", "Trade compliance", "African markets", "Agentic AI"]
+  },
 ];
