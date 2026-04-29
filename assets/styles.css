@@ -679,6 +679,65 @@
     }
   }
   
+  /* Audit section pillars */
+  .audit-pillars {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .audit-pillar {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--secondary);
+  }
+
+  .audit-pillar-num {
+    font-size: 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    min-width: 1.5rem;
+  }
+
+  /* Engagement stages */
+  .engagement-stages {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .engagement-stage {
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .engagement-stage-num {
+    font-size: 0.75rem;
+    color: var(--text);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.65rem;
+  }
+
+  @media (min-width: 768px) {
+    .engagement-stages {
+      flex-direction: row;
+    }
+
+    .engagement-stage {
+      flex: 1;
+      padding: 1.5rem;
+      border-top: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .engagement-stage:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+
   /* Print Styles */
   @media print {
     body {
