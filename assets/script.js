@@ -1,30 +1,4 @@
-// Loading Animation
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  const progressBar = document.getElementById('loader-progress-bar');
-  
-  // Simulate loading progress with anime.js
-  anime({
-    targets: progressBar,
-    width: '100%',
-    easing: 'easeInOutQuart',
-    duration: 2000,
-    complete: function() {
-      // Hide loader with a fade-out animation
-      anime({
-        targets: loader,
-        opacity: 0,
-        duration: 800,
-        easing: 'easeOutQuad',
-        complete: function() {
-          loader.style.display = 'none';
-          // Initialize animations after loader is hidden
-          initAnimations();
-        }
-      });
-    }
-  });
-});
+window.addEventListener('load', initAnimations);
 
 // // Mobile Menu Toggle
 const menuToggle = document.getElementById("menuToggle");
