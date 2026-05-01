@@ -657,8 +657,8 @@ function createThemeToggle() {
     // Animate theme change
     anime({
       targets: 'body',
-      backgroundColor: document.body.classList.contains('light-mode') ? '#0D0F18' : '#F5F5F7',
-      color: document.body.classList.contains('light-mode') ? '#FBFBFB' : '#121212',
+      backgroundColor: document.body.classList.contains('light-mode') ? '#0D0F18' : '#080808',
+      color: document.body.classList.contains('light-mode') ? '#FBFBFB' : '#ffffff',
       duration: 800,
       easing: 'easeOutQuad'
     });
