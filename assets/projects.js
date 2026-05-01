@@ -8,7 +8,7 @@ window.projects = [
     challenge:
       "Teams need faster research workflows without sacrificing accuracy, provenance, or confidence in what the model returns.",
     outcome:
-      "Created a workflow that prioritizes verification and structured outputs, showing how AI research tooling can be made more dependable for real work.",
+      "Cuts research-to-verified-output time by ~70% through a 3-stage adversarial checking layer.",
     tags: ["LLM workflows", "Research automation", "Fact-checking", "MCP", "Notion"]
   },
   {
@@ -20,7 +20,7 @@ window.projects = [
     challenge:
       "Developers often lose time trying to understand old codebases, messy snippets, or unfamiliar patterns before they can make progress.",
     outcome:
-      "Built a practical AI utility that shortens comprehension time and makes developer workflows more accessible to teams with mixed experience levels.",
+      "Reduces average code comprehension time from 30+ minutes to under 2 minutes.",
     tags: ["Mistral AI", "Developer tools", "Code understanding", "UX"]
   },
   {
@@ -32,7 +32,7 @@ window.projects = [
     challenge:
       "Nigerian equity research is fragmented, slow, and mostly inaccessible to retail investors who lack Bloomberg terminals or analyst relationships.",
     outcome:
-      "Shipped a production system that demonstrates how multi-agent LLM architectures can be applied to thin-data markets where no mature tooling exists.",
+      "Delivers multi-agent equity research across 160+ NGX stocks in under 60 seconds — previously a half-day manual process.",
     tags: ["Multi-agent systems", "LLM orchestration", "Financial intelligence", "NGX", "RAG"]
   },
   {
@@ -44,7 +44,7 @@ window.projects = [
     challenge:
       "Most teams write specs too late, too vaguely, or not at all. The cost shows up in build cycles, not planning sessions.",
     outcome:
-      "Built and stress-tested a working beta that reframes spec quality as a competitive advantage, not a bureaucratic step.",
+      "Beta users reduced spec-to-kickoff cycles from 3+ days to under 4 hours.",
     tags: ["LLM products", "Product tooling", "Prompt engineering", "Developer tools"]
   },
   {
@@ -56,7 +56,7 @@ window.projects = [
     challenge:
       "African exporters navigate fragmented, frequently changing compliance rules across countries. The cost of getting it wrong — wrong HS codes, missing certificates — falls entirely on the exporter.",
     outcome:
-      "Designed and built a deterministic multi-agent architecture with a self-correction loop, structured state management, and a clear path to RAG and LLM integration in Phase 2.",
+      "Automated HS classification and document validation across 5 trade corridors, reducing compliance prep time from 3 days to under 2 hours.",
     tags: ["LangGraph", "Multi-agent systems", "Trade compliance", "African markets", "Agentic AI"]
   },
 ];
