@@ -708,17 +708,17 @@
     }
 
     .case-study-card-featured {
-      grid-column: span 4;
+      grid-column: span 3;
       min-height: 0;
     }
 
     .case-study-card-featured .case-study-body {
-      padding: 1.25rem;
+      padding: 1.1rem;
       align-content: start;
     }
 
     .case-study-card-wide {
-      grid-column: span 2;
+      grid-column: span 3;
     }
 
     .case-study-footer {
