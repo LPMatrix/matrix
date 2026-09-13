@@ -58,36 +58,6 @@
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
 
   <style>
-    /* Loading indicator styles */
-    .loading-indicator {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-    }
-    
-    .loading-spinner {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      border: 3px solid rgba(255,255,255,.3);
-      border-radius: 50%;
-      border-top-color: #3b82f6;
-      animation: spin 1s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    #error-container {
-      display: none;
-      padding: 1rem;
-      margin: 1rem 0;
-      background-color: rgba(239, 68, 68, 0.2);
-      border-left: 4px solid #ef4444;
-      color: #fff;
-    }
-    
     /* Line clamp for excerpts */
     .line-clamp-3 {
       display: -webkit-box;
@@ -99,19 +69,6 @@
 </head>
 
 <body class="relative">
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader-text">
-      <span style="--i:1">B</span>
-      <span style="--i:2">L</span>
-      <span style="--i:3">O</span>
-      <span style="--i:4">G</span>
-    </div>
-    <div class="loader-progress">
-      <div class="loader-progress-bar" id="loader-progress-bar"></div>
-    </div>
-  </div>
-  
   <!-- Custom Cursor -->
   <div class="cursor hidden md:block" id="cursor"></div>
   
@@ -217,9 +174,6 @@
             </div>
           </div>
         </div>
-        
-        <!-- Error Container -->
-        <div id="error-container" class="max-w-4xl mx-auto"></div>
       </div>
     </section>
     
@@ -233,12 +187,6 @@
             </span>
           </span>
           <h2 class="section-heading parallax-text">FEATURED</h2>
-        </div>
-        
-        <!-- Loading Indicator for Featured Post -->
-        <div class="loading-indicator">
-          <div class="loading-spinner"></div>
-          <p class="mt-4 text-gray-400">Loading featured post...</p>
         </div>
         
         <div class="blog-featured-card rounded-lg overflow-hidden shadow-lg stagger-fade-in hover:shadow-xl transition-shadow duration-300" id="featured-post">
@@ -257,12 +205,6 @@
             </span>
           </span>
           <h2 class="section-heading parallax-text">RECENT POSTS</h2>
-        </div>
-        
-        <!-- Loading Indicator for Posts -->
-        <div class="loading-indicator">
-          <div class="loading-spinner"></div>
-          <p class="mt-4 text-gray-400">Loading blog posts...</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="posts-container">

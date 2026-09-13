@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
           rotateX: 0,
           rotateY: 0,
           translateZ: 0,
-          duration: 800,
-          easing: 'easeOutElastic(1, .6)',
+          duration: 300,
+          easing: 'easeOutQuart',
         });
         
         // Reset image position
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
             targets: cardImage,
             translateX: 0,
             translateY: 0,
-            duration: 800,
-            easing: 'easeOutElastic(1, .6)',
+            duration: 300,
+            easing: 'easeOutQuart',
           });
         }
       };

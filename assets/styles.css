@@ -42,17 +42,27 @@
     border-radius: 50%;
     background-color: var(--accent);
     position: fixed;
+    top: 0;
+    left: 0;
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
+    /* Driven per-frame from script.js; kept off the main thread. */
+    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
     mix-blend-mode: difference;
-    transition: transform 0.1s ease;
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+    will-change: transform;
+  }
+
+  .cursor.is-visible {
+    opacity: 1;
   }
   
   .nav-item {
     position: relative;
     overflow: hidden;
   }
+
   
   .nav-item::after {
     content: '';
@@ -79,16 +89,26 @@
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: var(--accent);
     z-index: -1;
-    transition: left 0.3s ease-in-out;
+    /* transform, not left: keeps the fill on the compositor instead of
+       triggering layout on every frame. */
+    transform: translateX(-100%);
+    transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  
-  .special-button:hover::before {
-    left: 0;
+
+  @media (hover: hover) and (pointer: fine) {
+    .special-button:hover::before {
+      transform: translateX(0);
+    }
+  }
+
+  /* Keyboard users get the same fill. */
+  .special-button:focus-visible::before {
+    transform: translateX(0);
   }
   
   .scroll-progress {
@@ -309,6 +329,13 @@
   
   .skill-pill:hover::before {
     transform: scaleX(1);
+  }
+
+  /* Hover lift is gated so a tap on touch doesn't leave it stuck scaled up. */
+  @media (hover: hover) and (pointer: fine) {
+    .skill-pill:hover {
+      transform: scale(1.05);
+    }
   }
   
   .parallax-section {
@@ -589,7 +616,7 @@
     background-color: #080808 !important;
     border: 1px solid rgba(191, 255, 0, 0.3);
     color: #ffffff;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   body.light-mode .skill-pill:hover {
@@ -682,10 +709,6 @@
   /* Media Queries */
   @media (max-width: 768px) {
     .section-heading {
-      font-size: 3rem;
-    }
-    
-    .loader-text {
       font-size: 3rem;
     }
     
@@ -830,6 +853,68 @@
   }
 
   /* Print Styles */
+  /* Press feedback ------------------------------------------------------- */
+  /* Pressable things scale down on :active so the UI feels like it heard
+     the click. Kept subtle (0.97) and fast (160ms ease-out). */
+  /* Selectors are doubled so this beats Tailwind's .transition-colors utility,
+     which is injected after this stylesheet and would otherwise drop transform
+     from transition-property. The colour properties are restated for the same
+     reason -- CSS can't append to transition-property. */
+  .special-button.special-button,
+  .skill-pill.skill-pill,
+  .social-icon.social-icon,
+  .case-study-link.case-study-link,
+  .case-study-card.case-study-card,
+  .category-btn.category-btn,
+  .nav-item.nav-item,
+  .menu-toggle.menu-toggle,
+  .mobile-menu-close.mobile-menu-close {
+    transition:
+      transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+      color 300ms ease,
+      background-color 300ms ease,
+      border-color 300ms ease;
+  }
+
+  .special-button:active,
+  .skill-pill:active,
+  .category-btn:active,
+  .menu-toggle:active,
+  .mobile-menu-close:active {
+    transform: scale(0.97);
+  }
+
+  .nav-item:active {
+    transform: scale(0.96);
+  }
+
+  /* These already own a transform on hover, so compose rather than replace. */
+  .social-icon:active {
+    transform: translateY(-5px) scale(0.94);
+  }
+
+  .case-study-link:active {
+    transform: translateX(4px) scale(0.97);
+  }
+
+  .case-study-card:active {
+    transform: translateY(-4px) scale(0.995);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .special-button:active,
+    .skill-pill:active,
+    .social-icon:active,
+    .case-study-link:active,
+    .case-study-card:active,
+    .category-btn:active,
+    .nav-item:active,
+    .menu-toggle:active,
+    .mobile-menu-close:active {
+      transform: none;
+    }
+  }
+
   @media print {
     body {
       background-color: white;

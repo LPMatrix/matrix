@@ -60,57 +60,91 @@ const menuToggle = document.getElementById("menuToggle");
       });
 
 // Custom Cursor
+// One rAF loop writes a single composited transform. Previously this spawned a
+// fresh anime() instance per mousemove animating left/top, which forced layout
+// on every frame.
 const cursor = document.getElementById('cursor');
 
-document.addEventListener('mousemove', (e) => {
-  // Use anime.js for smoother cursor movement
-  anime({
-    targets: cursor,
-    left: e.clientX,
-    top: e.clientY,
-    duration: 50,
-    easing: 'linear'
-  });
-});
+if (cursor && !('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+  const POSITION_EASE = 0.22;
+  const SCALE_EASE = 0.18;
 
-document.addEventListener('mousedown', () => {
-  anime({
-    targets: cursor,
-    scale: 0.8,
-    duration: 150,
-    easing: 'easeOutQuad'
-  });
-});
+  let pointerX = 0;
+  let pointerY = 0;
+  let renderedX = 0;
+  let renderedY = 0;
+  let targetScale = 1;
+  let renderedScale = 1;
+  let hasPointer = false;
+  let frame = null;
 
-document.addEventListener('mouseup', () => {
-  anime({
-    targets: cursor,
-    scale: 1,
-    duration: 150,
-    easing: 'easeOutQuad'
-  });
-});
+  function render() {
+    renderedX += (pointerX - renderedX) * POSITION_EASE;
+    renderedY += (pointerY - renderedY) * POSITION_EASE;
+    renderedScale += (targetScale - renderedScale) * SCALE_EASE;
 
-// Add hover effects for links and buttons with custom cursor
-document.querySelectorAll('a, button, .skill-pill, .work-card').forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    anime({
-      targets: cursor,
-      scale: 1.5,
-      duration: 200,
-      easing: 'easeOutQuad'
-    });
+    cursor.style.transform =
+      `translate3d(${renderedX}px, ${renderedY}px, 0) translate(-50%, -50%) scale(${renderedScale})`;
+
+    // Idle out once the cursor has caught up, so we stop burning frames.
+    const settled =
+      Math.abs(pointerX - renderedX) < 0.1 &&
+      Math.abs(pointerY - renderedY) < 0.1 &&
+      Math.abs(targetScale - renderedScale) < 0.005;
+
+    frame = settled ? null : requestAnimationFrame(render);
+  }
+
+  function requestRender() {
+    if (frame === null) {
+      frame = requestAnimationFrame(render);
+    }
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+
+    if (!hasPointer) {
+      // Snap to the first known position so it doesn't fly in from the corner.
+      hasPointer = true;
+      renderedX = pointerX;
+      renderedY = pointerY;
+      cursor.classList.add('is-visible');
+    }
+
+    requestRender();
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.classList.remove('is-visible');
   });
-  
-  item.addEventListener('mouseleave', () => {
-    anime({
-      targets: cursor,
-      scale: 1,
-      duration: 200,
-      easing: 'easeOutQuad'
-    });
+
+  document.addEventListener('mouseenter', () => {
+    if (hasPointer) {
+      cursor.classList.add('is-visible');
+    }
   });
-});
+
+  function setScale(value) {
+    targetScale = value;
+    requestRender();
+  }
+
+  document.addEventListener('mousedown', () => setScale(0.8), { passive: true });
+  document.addEventListener('mouseup', () => setScale(1), { passive: true });
+
+  // Delegated so dynamically rendered content (blog cards) is covered too.
+  const HOVER_TARGETS = 'a, button, .skill-pill, .work-card';
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(HOVER_TARGETS)) setScale(1.5);
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(HOVER_TARGETS)) setScale(1);
+  });
+}
 
 // Scroll Progress
 window.addEventListener('scroll', () => {
@@ -336,11 +370,11 @@ function initAnimations() {
         if (entry.target.querySelectorAll('.skill-pill').length > 0) {
           anime({
             targets: entry.target.querySelectorAll('.skill-pill'),
-            scale: [0.8, 1],
+            scale: [0.95, 1],
             opacity: [0, 1],
-            delay: anime.stagger(80),
-            duration: 600,
-            easing: 'easeOutElastic(1, .5)'
+            delay: anime.stagger(60),
+            duration: 400,
+            easing: 'easeOutQuart'
           });
         }
         
@@ -580,34 +614,13 @@ document.querySelectorAll('.magnetic-button').forEach(button => {
       targets: button,
       translateX: 0,
       translateY: 0,
-      duration: 600,
-      easing: 'easeOutElastic(1, .5)'
+      duration: 250,
+      easing: 'easeOutQuart'
     });
   });
 });
 
-// Hover animations for skill pills
-document.querySelectorAll('.skill-pill').forEach(pill => {
-  pill.addEventListener('mouseenter', () => {
-    anime({
-      targets: pill,
-      scale: 1.05,
-      backgroundColor: 'rgba(63, 140, 255, 0.2)',
-      duration: 300,
-      easing: 'easeOutQuad'
-    });
-  });
-  
-  pill.addEventListener('mouseleave', () => {
-    anime({
-      targets: pill,
-      scale: 1,
-      backgroundColor: 'rgba(31, 41, 55, 1)', // bg-gray-800
-      duration: 300,
-      easing: 'easeOutQuad'
-    });
-  });
-});
+// Skill pill hover/press feedback now lives in styles.css (.skill-pill).
 
 // Special animations for work cards
 document.querySelectorAll('.work-card').forEach(card => {

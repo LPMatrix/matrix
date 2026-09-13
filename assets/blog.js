@@ -1,14 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const HASHNODE_PUBLICATION_URL = 'https://matrix.hashnode.dev';
-  const RSS_FEED_URL = `${HASHNODE_PUBLICATION_URL}/rss.xml`;
 
-  const feedUrls = [
-    RSS_FEED_URL,
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(RSS_FEED_URL)}`,
-    `https://corsproxy.io/?${encodeURIComponent(RSS_FEED_URL)}`
-  ];
-
-  const fallbackPosts = [
+  const allPosts = [
     ['Jan 15, 2026', 'Building a Text-to-SQL RAG System: From Documentation to Databases', 'building-a-text-to-sql-rag-system-from-documentation-to-databases', 'AI'],
     ['Jan 11, 2026', 'Building a RAG System for Laravel Documentation: A Local-First Approach', 'building-a-rag-system-for-laravel-documentation-a-local-first-approach', 'AI'],
     ['Jun 13, 2025', 'Exploring Withdrawal Functionality in Financial Applications', 'exploring-withdrawal-functionality-in-financial-applications', 'Web Development'],
@@ -40,140 +33,28 @@ document.addEventListener('DOMContentLoaded', function() {
     ['Jan 29, 2021', 'The Web: Proxies', 'the-web-proxies', 'Web Development'],
     ['Jan 21, 2021', 'The Web: Web Servers', 'the-web-web-servers', 'Web Development'],
     ['Jan 18, 2021', 'The Web: TCP, UDP', 'the-web-tcp-udp', 'Web Development']
-  ].map(([date, title, slug, category], index) => normalizePost({
+  ].map(([date, title, slug, category], index) => ({
+    id: index + 1,
     title,
     date,
     category,
     tags: [category],
     link: `${HASHNODE_PUBLICATION_URL}/${slug}`,
-    excerpt: 'Read the full article on The Digital Matrix.'
-  }, index));
+    excerpt: 'Read the full article on The Digital Matrix.',
+    author: 'Mubaraq Sanusi'
+  }));
 
-  let allPosts = [];
-  let filteredPosts = [];
+  let filteredPosts = allPosts;
   let selectedCategory = 'All';
 
   const postsContainer = document.getElementById('posts-container');
   const featuredContainer = document.getElementById('featured-post');
-  const errorContainer = document.getElementById('error-container');
   const searchInput = document.getElementById('articleSearch');
   const categoryButtons = document.querySelectorAll('.category-btn');
 
-  init();
-
-  async function init() {
-    showLoadingState();
-
-    try {
-      allPosts = mergePosts(await loadPostsFromFeed(), fallbackPosts);
-      clearErrorMessage();
-    } catch (error) {
-      console.warn('Using fallback Hashnode posts:', error);
-      allPosts = fallbackPosts;
-      clearErrorMessage();
-    }
-
-    filteredPosts = allPosts;
-    displayFeaturedPost(allPosts[0]);
-    renderPosts();
-    bindControls();
-    hideLoadingState();
-  }
-
-  async function loadPostsFromFeed() {
-    let lastError;
-
-    for (const url of feedUrls) {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`Feed request failed with ${response.status}`);
-        }
-
-        const feedText = await response.text();
-        const xmlText = unwrapProxyResponse(feedText);
-        const posts = processRSSFeed(xmlText);
-
-        if (posts.length > 0) {
-          return posts;
-        }
-      } catch (error) {
-        lastError = error;
-      }
-    }
-
-    throw lastError || new Error('No posts found in Hashnode feed');
-  }
-
-  function unwrapProxyResponse(text) {
-    const trimmedText = text.trim();
-
-    if (!trimmedText.startsWith('{')) {
-      return text;
-    }
-
-    try {
-      const data = JSON.parse(trimmedText);
-      return data.contents || data.data || text;
-    } catch (error) {
-      return text;
-    }
-  }
-
-  function processRSSFeed(xmlText) {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-
-    if (xmlDoc.querySelector('parsererror')) {
-      throw new Error('Hashnode feed returned invalid XML');
-    }
-
-    return Array.from(xmlDoc.querySelectorAll('item')).map((item, index) => {
-      const title = getElementText(item, 'title');
-      const link = getElementText(item, 'link');
-      const pubDate = getElementText(item, 'pubDate');
-      const description = getElementText(item, 'description');
-      const content = getElementText(item, 'content\\:encoded') || getElementText(item, 'encoded') || description;
-      const categories = Array.from(item.querySelectorAll('category')).map(category => category.textContent.trim()).filter(Boolean);
-      const wordCount = stripHtml(content).split(/\s+/).filter(Boolean).length;
-
-      return normalizePost({
-        title,
-        link,
-        date: formatDate(pubDate),
-        excerpt: createExcerpt(description || content),
-      category: categories[0] || 'General',
-        tags: categories,
-        readTime: Math.max(1, Math.ceil(wordCount / 200))
-      }, index);
-    }).filter(post => post.title && post.link);
-  }
-
-  function normalizePost(post, index) {
-    return {
-      id: index + 1,
-      title: post.title || 'Untitled article',
-      link: post.link || HASHNODE_PUBLICATION_URL,
-      date: post.date || '',
-      excerpt: post.excerpt || 'Read the full article on The Digital Matrix.',
-      category: post.category || 'General',
-      tags: post.tags || [],
-      readTime: post.readTime || 1,
-      author: 'Mubaraq Sanusi'
-    };
-  }
-
-  function mergePosts(primaryPosts, secondaryPosts) {
-    const postsByLink = new Map();
-
-    [...primaryPosts, ...secondaryPosts].forEach(post => {
-      if (!postsByLink.has(post.link)) {
-        postsByLink.set(post.link, post);
-      }
-    });
-
-    return Array.from(postsByLink.values());
-  }
+  displayFeaturedPost(allPosts[0]);
+  renderPosts();
+  bindControls();
 
   function renderPosts() {
     if (!postsContainer) return;
@@ -223,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
           <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">${escapeHtml(post.category)}</span>
           <span class="text-sm text-gray-400">${escapeHtml(post.date)}</span>
-          <span class="text-sm text-gray-400">${escapeHtml(String(post.readTime))} min read</span>
         </div>
         <h3 class="text-xl font-bold mb-4">
           <a href="${escapeAttribute(post.link)}" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-300">${escapeHtml(post.title)}</a>
@@ -273,59 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     renderPosts();
-  }
-
-  function getElementText(parent, selector) {
-    const element = parent.querySelector(selector);
-    return element ? element.textContent.trim() : '';
-  }
-
-  function createExcerpt(content) {
-    const plainText = stripHtml(content).replace(/\s+/g, ' ').trim();
-    return plainText.length > 150 ? `${plainText.substring(0, 150)}...` : plainText;
-  }
-
-  function stripHtml(content) {
-    return content.replace(/<[^>]*>?/gm, '');
-  }
-
-  function formatDate(dateString) {
-    if (!dateString) return '';
-
-    const date = new Date(dateString);
-    if (Number.isNaN(date.getTime())) return dateString;
-
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
-
-  function showLoadingState() {
-    document.querySelectorAll('.loading-indicator').forEach(element => {
-      element.style.display = 'block';
-    });
-  }
-
-  function hideLoadingState() {
-    document.querySelectorAll('.loading-indicator').forEach(element => {
-      element.style.display = 'none';
-    });
-  }
-
-  function displayErrorMessage(message) {
-    if (!errorContainer) return;
-
-    errorContainer.textContent = message;
-    errorContainer.style.display = 'block';
-  }
-
-  function clearErrorMessage() {
-    if (!errorContainer) return;
-
-    errorContainer.textContent = '';
-    errorContainer.style.display = 'none';
   }
 
   function escapeHtml(value) {
