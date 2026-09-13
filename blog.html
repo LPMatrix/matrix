@@ -27,6 +27,9 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
   
   <!-- GSAP for animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -203,13 +206,12 @@
           <button class="category-btn px-6 py-2 rounded-full border border-gray-700 hover:border-accent hover:text-accent transition-colors duration-300">Web Development</button>
           <button class="category-btn px-6 py-2 rounded-full border border-gray-700 hover:border-accent hover:text-accent transition-colors duration-300">AI</button>
           <button class="category-btn px-6 py-2 rounded-full border border-gray-700 hover:border-accent hover:text-accent transition-colors duration-300">DevOps</button>
-          <button class="category-btn px-6 py-2 rounded-full border border-gray-700 hover:border-accent hover:text-accent transition-colors duration-300">IoT</button>
         </div>
         
         <!-- Search Bar -->
         <div class="max-w-lg mx-auto mb-12 stagger-fade-in">
           <div class="relative">
-            <input type="text" placeholder="Search articles..." class="w-full px-4 py-3 pl-12 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300">
+            <input id="articleSearch" type="search" placeholder="Search articles..." class="w-full px-4 py-3 pl-12 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300">
             <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
               <i class="fas fa-search text-gray-500"></i>
             </div>
@@ -267,20 +269,6 @@
           <!-- Blog posts will be loaded dynamically -->
         </div>
         
-        <!-- Pagination -->
-        <div class="flex justify-center mt-12">
-          <div class="flex space-x-2">
-            <button id="prevPage" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300" disabled>
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <div id="paginationNumbers" class="flex space-x-2">
-              <!-- Page numbers will be dynamically generated here -->
-            </div>
-            <button id="nextPage" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent transition-colors duration-300">
-              <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -293,96 +281,21 @@
         <a href="index.html" class="text-3xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
       </div>
       <div class="max-w-lg mx-auto mb-8">
-        <p class="text-text">Building digital products, brands, and experiences that people love.</p>
+          <p class="text-text">Building practical AI products and writing about the engineering behind them.</p>
       </div>
       <div class="flex justify-center space-x-6 mb-8">
-        <a href="https://x.com/WeirdMatrix" class="text-xl social-icon" target="_blank">
+        <a href="https://x.com/WeirdMatrix" class="text-xl social-icon" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="https://www.linkedin.com/in/sirematrix/" class="text-xl social-icon" target="_blank">
+        <a href="https://www.linkedin.com/in/sirematrix/" class="text-xl social-icon" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-linkedin-in"></i>
         </a>
-        <a href="https://github.com/LPMatrix" class="text-xl social-icon" target="_blank">
+        <a href="https://github.com/LPMatrix" class="text-xl social-icon" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-github"></i>
         </a>
       </div>
-      <p class="text-sm text-text">Created with <span class="text-accent">❤️</span> © 2025</p>
+      <p class="text-sm text-text">Created with <span class="text-accent">care</span> © 2026</p>
     </div>
   </footer>
-  <script>
-    const postsPerPage = 6; // Number of posts per page
-    let currentPage = 1;
-    let totalPosts = 0; // This should be dynamically set based on the total number of posts
-    const postsContainer = document.getElementById('posts-container');
-    const paginationNumbers = document.getElementById('paginationNumbers');
-    const prevPageButton = document.getElementById('prevPage');
-    const nextPageButton = document.getElementById('nextPage');
-
-    // Function to fetch and display posts for the current page
-    function displayPosts(page) {
-      // Fetch posts dynamically (replace with your API or data fetching logic)
-      // For demonstration, we'll assume `totalPosts` is already set
-      const start = (page - 1) * postsPerPage;
-      const end = start + postsPerPage;
-
-      // Clear existing posts
-      postsContainer.innerHTML = '';
-
-      // Simulate fetching posts
-      for (let i = start + 1; i <= Math.min(end, totalPosts); i++) {
-        const post = document.createElement('div');
-        post.className = 'blog-post-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300';
-        post.innerHTML = `<div class="p-4 bg-gray-800">
-                <h3 class="text-xl font-bold text-white">Post Title ${i}</h3>
-                <p class="text-text line-clamp-3">This is a brief description of post ${i}.</p>
-              </div>`;
-        postsContainer.appendChild(post);
-      }
-
-      updatePagination();
-    }
-
-    // Function to update pagination buttons
-    function updatePagination() {
-      paginationNumbers.innerHTML = '';
-      const totalPages = Math.ceil(totalPosts / postsPerPage);
-
-      for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.className = `w-10 h-10 rounded-full flex items-center justify-center ${
-      i === currentPage ? 'bg-accent' : 'bg-gray-800 hover:bg-accent'
-        } transition-colors duration-300`;
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => {
-      currentPage = i;
-      displayPosts(currentPage);
-        });
-        paginationNumbers.appendChild(pageButton);
-      }
-
-      prevPageButton.disabled = currentPage === 1;
-      nextPageButton.disabled = currentPage === totalPages;
-    }
-
-    // Event listeners for previous and next buttons
-    prevPageButton.addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage--;
-        displayPosts(currentPage);
-      }
-    });
-
-    nextPageButton.addEventListener('click', () => {
-      const totalPages = Math.ceil(totalPosts / postsPerPage);
-      if (currentPage < totalPages) {
-        currentPage++;
-        displayPosts(currentPage);
-      }
-    });
-
-    // Initialize pagination (set totalPosts dynamically)
-    totalPosts = 20; // Example: Replace with actual total posts count
-    displayPosts(currentPage);
-  </script>
 </body>
 </html>
