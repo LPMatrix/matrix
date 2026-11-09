@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     category,
     tags: [category],
     link: `${HASHNODE_PUBLICATION_URL}/${slug}`,
-    excerpt: 'Read the full article on The Digital Matrix.',
     author: 'Mubaraq Sanusi'
   }));
 
@@ -48,11 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
   let selectedCategory = 'All';
 
   const postsContainer = document.getElementById('posts-container');
-  const featuredContainer = document.getElementById('featured-post');
   const searchInput = document.getElementById('articleSearch');
+  const postCount = document.getElementById('postCount');
   const categoryButtons = document.querySelectorAll('.category-btn');
 
-  displayFeaturedPost(allPosts[0]);
   renderPosts();
   bindControls();
 
@@ -61,73 +59,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     postsContainer.innerHTML = '';
 
+    if (postCount) {
+      postCount.textContent = filteredPosts.length === 1 ? '1 article' : `${filteredPosts.length} articles`;
+    }
+
     if (filteredPosts.length === 0) {
       postsContainer.innerHTML = `
-        <div class="md:col-span-3 bg-gray-900 border border-gray-800 rounded-lg p-8 text-center">
-          <h3 class="text-2xl font-bold mb-3">No matching articles</h3>
+        <div class="py-12">
+          <h2 class="text-xl font-bold mb-2">No matching articles</h2>
           <p class="text-text">Try another search term or category.</p>
         </div>
       `;
-    } else {
-      filteredPosts.forEach(post => {
-        postsContainer.appendChild(createPostElement(post));
-      });
+      return;
     }
-  }
 
-  function displayFeaturedPost(post) {
-    if (!featuredContainer || !post) return;
-
-    featuredContainer.innerHTML = `
-      <div class="flex flex-col md:flex-row">
-        <div class="w-full p-8 md:p-10 bg-gray-900">
-          <div class="flex flex-wrap items-center gap-3 mb-4">
-            <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">${escapeHtml(post.category)}</span>
-            <span class="text-sm text-gray-400">${escapeHtml(post.date)}</span>
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4">${escapeHtml(post.title)}</h3>
-          <p class="text-text mb-6">${escapeHtml(post.excerpt)}</p>
-          <a href="${escapeAttribute(post.link)}" target="_blank" rel="noopener noreferrer" class="special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300 inline-flex items-center gap-2">
-            Read on Hashnode <i class="fas fa-arrow-up-right-from-square text-sm"></i>
-          </a>
-        </div>
-      </div>
-    `;
+    filteredPosts.forEach(post => {
+      postsContainer.appendChild(createPostElement(post));
+    });
   }
 
   function createPostElement(post) {
-    const postDiv = document.createElement('article');
-    postDiv.className = 'blog-card rounded-lg overflow-hidden shadow-lg stagger-fade-in hover:shadow-xl transition-shadow duration-300';
+    const row = document.createElement('article');
+    row.className = 'post-row stagger-fade-in';
 
-    postDiv.innerHTML = `
-      <div class="p-6 bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <span class="bg-accent/20 text-accent text-xs px-3 py-1 rounded-full">${escapeHtml(post.category)}</span>
-          <span class="text-sm text-gray-400">${escapeHtml(post.date)}</span>
-        </div>
-        <h3 class="text-xl font-bold mb-4">
-          <a href="${escapeAttribute(post.link)}" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-300">${escapeHtml(post.title)}</a>
-        </h3>
-        <p class="text-text mb-6 line-clamp-3">${escapeHtml(post.excerpt)}</p>
-        <a href="${escapeAttribute(post.link)}" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline inline-flex items-center gap-2">
-          Read more <i class="fas fa-arrow-up-right-from-square text-xs"></i>
-        </a>
-      </div>
+    row.innerHTML = `
+      <p class="post-num" aria-hidden="true">${String(post.id).padStart(2, '0')}</p>
+      <p class="post-date">${escapeHtml(post.date)}</p>
+      <h2 class="post-title">
+        <a href="${escapeAttribute(post.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(post.title)}</a>
+      </h2>
+      <p class="post-category">${escapeHtml(post.category)}</p>
     `;
 
-    return postDiv;
+    return row;
   }
 
   function bindControls() {
     categoryButtons.forEach(button => {
       button.addEventListener('click', function() {
         categoryButtons.forEach(btn => {
-          btn.classList.remove('active', 'bg-accent', 'text-white', 'border-accent');
-          btn.classList.add('border-gray-700');
+          btn.classList.remove('active', 'btn-primary');
+          btn.classList.add('btn-ghost');
+          btn.setAttribute('aria-pressed', 'false');
         });
 
-        this.classList.add('active', 'bg-accent', 'text-white', 'border-accent');
-        this.classList.remove('border-gray-700');
+        this.classList.add('active', 'btn-primary');
+        this.classList.remove('btn-ghost');
+        this.setAttribute('aria-pressed', 'true');
 
         selectedCategory = this.textContent.trim();
         applyFilters();
@@ -146,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     filteredPosts = allPosts.filter(post => {
       const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory || post.tags.includes(selectedCategory);
-      const searchableText = `${post.title} ${post.excerpt} ${post.category} ${post.tags.join(' ')}`.toLowerCase();
+      const searchableText = `${post.title} ${post.category} ${post.tags.join(' ')}`.toLowerCase();
       const matchesSearch = !searchTerm || searchableText.includes(searchTerm);
 
       return matchesCategory && matchesSearch;

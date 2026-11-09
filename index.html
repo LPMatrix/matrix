@@ -3,7 +3,7 @@
 <head>
 	<meta name="robots" content="index, follow">
 	<meta name="author" content="Sanusi Mubaraq">
-	<meta name="theme-color" content="#000000">
+	<meta name="theme-color" content="#0D0F18">
 	<meta property="og:title" content="Mubaraq Sanusi | AI Consultant for LLM Products">
 	<meta property="og:description" content="AI consultant helping startups and product teams design, ship, and scale practical LLM products, RAG systems, and intelligent workflows.">
 	<meta property="og:image" content="https://mubaraq.dev/assets/img/mubaraq.jpg">
@@ -22,34 +22,29 @@
 	<meta name="description" content="Mubaraq Sanusi is an AI consultant helping teams build reliable LLM features, RAG systems, and production-ready intelligent products.">
 	<meta name="keywords" content="Sanusi, Mubaraq, AI Consultant, LLM Consultant, RAG Engineer, NLP Engineer, AI Product Advisor">
 	<title>Mubaraq Sanusi | AI Consultant for LLM Products</title>
+	<script>document.documentElement.classList.add('js');</script>
   
 	<!-- Tailwind CSS -->
 	<script src="https://cdn.tailwindcss.com"></script>
 
-	<!-- Anime.js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
   
 	<!-- <script src="assets/project-animations.js" defer></script> -->
-  
-  	<!-- Locomotive Scroll for smooth scrolling -->
-	<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 	
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 	
-	<!-- Smooth Scroll -->
-	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
-	
+	<link rel="preload" as="image" href="assets/img/mubaraq-portrait.jpg" fetchpriority="high">
+
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/styles.css">
   
 	<!-- Custom JavaScript -->
 	<script src="assets/script.js" defer></script>
 	<script src="assets/projects.js" defer></script>
+	<script src="assets/art.js" defer></script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-513S4WSWZ3"></script>
@@ -82,526 +77,414 @@
 </head>
 
 <body class="relative">
-  <!-- Custom Cursor -->
-  <div class="cursor hidden md:block" id="cursor"></div>
-  
-  <!-- Grid Lines -->
-  <div class="grid-lines hidden sm:block">
-    <div class="grid-line grid-line-vertical" style="left: 20%;"></div>
-    <div class="grid-line grid-line-vertical" style="left: 40%;"></div>
-    <div class="grid-line grid-line-vertical" style="left: 60%;"></div>
-    <div class="grid-line grid-line-vertical" style="left: 80%;"></div>
-    <div class="grid-line grid-line-horizontal" style="top: 20%;"></div>
-    <div class="grid-line grid-line-horizontal" style="top: 40%;"></div>
-    <div class="grid-line grid-line-horizontal" style="top: 60%;"></div>
-    <div class="grid-line grid-line-horizontal" style="top: 80%;"></div>
-  </div>
-  
-  <!-- Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
-  
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-  
-  <!-- Navigation Menu (Desktop) -->
-  <nav class="fixed top-0 left-0 w-full py-4 sm:py-6 md:py-8 px-4 md:px-16 z-50 transition-all duration-300" id="mainNav">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full py-4 sm:py-6 md:py-8 px-4 md:px-8 lg:px-16 z-50" id="mainNav" aria-label="Main">
     <div class="container mx-auto">
       <div class="flex justify-between items-center">
-        <a href="#" class="text-xl sm:text-2xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
-        
-        <div class="hidden md:flex space-x-4 lg:space-x-8 items-center">
-          <a href="#about" class="nav-item hover:text-accent transition-colors duration-300">Services</a>
-          <a href="#resume" class="nav-item hover:text-accent transition-colors duration-300">Experience</a>
-          <a href="#work" class="nav-item hover:text-accent transition-colors duration-300">Case Studies</a>
-          <a href="#contact" class="nav-item hover:text-accent transition-colors duration-300">Consultation</a>
-          <a href="blog.html" class="nav-item hover:text-accent transition-colors duration-300">Articles</a>
+        <a href="#" class="nav-logo text-xl sm:text-2xl font-bold">Mubaraq<span class="text-accent">.</span></a>
+
+        <div class="hidden md:flex items-center gap-5 lg:gap-8">
+          <a href="#about" class="nav-item">Services</a>
+          <a href="#resume" class="nav-item">Experience</a>
+          <a href="#work" class="nav-item">Case studies</a>
+          <a href="blog.html" class="nav-item">Articles</a>
+          <a href="#contact" class="btn btn-primary btn-sm">Book a consultation</a>
         </div>
-        
-        <!-- Mobile Menu Toggle - Simplified -->
-        <div class="menu-toggle md:hidden" id="menuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
+
+        <div class="flex items-center gap-3 md:hidden">
+          <a href="#contact" class="btn btn-primary btn-sm" aria-label="Book a consultation">Book</a>
+          <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </div>
   </nav>
-  
+
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation menu">
+    <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation menu">
       <span></span>
       <span></span>
     </button>
-    <div class="flex flex-col items-center space-y-6 text-xl sm:text-2xl md:text-3xl">
-      <a href="#about" class="mobile-nav-item" data-menu-link>Services</a>
-      <a href="#resume" class="mobile-nav-item" data-menu-link>Experience</a>
-      <a href="#work" class="mobile-nav-item" data-menu-link>Case Studies</a>
-      <a href="#contact" class="mobile-nav-item" data-menu-link>Consultation</a>
+    <nav class="flex flex-col items-center gap-6 text-xl sm:text-2xl" aria-label="Mobile">
+      <a href="#about" class="mobile-nav-item">Services</a>
+      <a href="#resume" class="mobile-nav-item">Experience</a>
+      <a href="#work" class="mobile-nav-item">Case studies</a>
       <a href="blog.html" class="mobile-nav-item">Articles</a>
-      
-      <div class="flex space-x-6 mt-6">
-        <a href="https://x.com/WeirdMatrix" class="text-xl sm:text-2xl social-icon" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/sirematrix/" class="text-xl sm:text-2xl social-icon" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/LPMatrix" class="text-xl sm:text-2xl social-icon" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-    </div>
+      <a href="#contact" class="btn btn-primary mt-4">Book a consultation</a>
+    </nav>
   </div>
 
-  
-  <!-- Main Content Container -->
-  <main class="smooth-scroll" id="smooth-content">
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-4 md:px-16 py-12 sm:py-16 md:py-20 relative overflow-hidden" id="hero">
-      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-20 z-0"></div>
-      
-      <div class="container mx-auto relative z-10">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="w-full md:w-1/2 mb-10 md:mb-0">
-            <p class="text-accent mb-2 stagger-fade-in">AI consultant for ambitious product teams</p>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 stagger-fade-in">
-              <span class="block">Sanusi</span>
-              <span class="block text-gradient">Mubaraq</span>
-            </h1>
-            <p class="text-text text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-xl stagger-fade-in">
-              I help startups and companies design, build, and ship practical AI products, from LLM features and RAG systems to the backend foundations that make them reliable in production.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:space-x-4 stagger-fade-in">
-              <a href="#contact" class="w-full sm:w-auto text-center bg-accent text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors duration-300">Book a Consultation</a>
-              <a href="#work" class="w-full sm:w-auto text-center special-button bg-transparent border border-accent text-accent px-6 py-3 rounded-full hover:text-white transition-colors duration-300 mt-3 sm:mt-0">View Case Studies</a>
-            </div>
+  <div class="rail" id="rail" aria-hidden="true">
+    <span data-rail-num>00</span>
+    <span class="rail-line"></span>
+    <span data-rail-label>Introduction</span>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="hero" data-section="00" data-label="Introduction">
+      <canvas class="hero-art" id="heroArt" aria-hidden="true"></canvas>
+
+      <div class="container mx-auto hero-inner">
+        <p class="hero-eyebrow">AI consultant for ambitious product teams</p>
+
+        <h1 class="hero-title" aria-label="Sanusi Mubaraq">
+          <span class="line" aria-hidden="true"><span class="word" style="--n:0">Sanusi</span></span>
+          <span class="line" aria-hidden="true"><span class="word serif" style="--n:1">Mubaraq<span class="dot">.</span></span></span>
+        </h1>
+
+        <figure class="hero-portrait" data-parallax>
+          <div class="portrait-frame">
+            <img src="assets/img/mubaraq-portrait.jpg" width="1050" height="1400" alt="Portrait of Sanusi Mubaraq" fetchpriority="high">
           </div>
-          
-          <div class="w-full md:w-1/2 relative mt-8 md:mt-0">
-            <div class="hero-image-container stagger-fade-in relative mx-auto max-w-xs sm:max-w-sm md:max-w-md">
-              <img src="assets/img/mubaraq.jpg" alt="Sanusi Mubaraq" class="rounded-lg shadow-2xl w-full hero-image">
-              <div class="absolute -bottom-4 sm:-bottom-8 md:-bottom-10 -left-4 sm:-left-8 md:-left-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border-l-2 md:border-l-4 border-b-2 md:border-b-4 border-accent"></div>
-              <div class="absolute -top-4 sm:-top-8 md:-top-10 -right-4 sm:-right-8 md:-right-10 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border-t-2 md:border-t-4 border-r-2 md:border-r-4 border-accent"></div>
-            </div>
+          <figcaption class="portrait-cap"><span>Fig. 01</span><span>Sanusi Mubaraq</span></figcaption>
+        </figure>
+
+        <div class="hero-foot">
+          <p class="hero-lede">
+            I help startups and companies design, build, and ship practical AI products, from LLM features and RAG systems to the backend foundations that make them <em>reliable in production</em>.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Book a consultation</a>
+            <a href="#work" class="btn btn-ghost">View case studies</a>
           </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-          <a href="#about" class="text-accent">
-            <i class="fas fa-chevron-down"></i>
-          </a>
         </div>
       </div>
     </section>
-    
-    <!-- About Section -->
-    <section id="about" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
-      <div class="container mx-auto">
-        <div class="flex flex-col mb-8 sm:mb-12">
-          <span class="text-accent mb-2 overflow-hidden">
-            <span class="reveal-text">
-              <span>01 / HOW I HELP</span>
-            </span>
-          </span>
-          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">SERVICES</h2>
+
+    <!-- Ribbon of services -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span class="mq-solid">AI Product Strategy</span><i class="mq-dot"></i>
+          <span class="mq-line">LLM Feature Design</span><i class="mq-dot"></i>
+          <span class="mq-solid">RAG Architecture</span><i class="mq-dot"></i>
+          <span class="mq-line">AI Agents</span><i class="mq-dot"></i>
+          <span class="mq-solid">Prompt &amp; Eval Systems</span><i class="mq-dot"></i>
+          <span class="mq-line">Backend Engineering</span><i class="mq-dot"></i>
         </div>
-        
-        <div class="flex flex-col md:flex-row">
-          <div class="md:w-1/2 mb-10 md:mb-0 text-text">
-            <div class="max-w-xl space-y-4 sm:space-y-6">
+        <div class="marquee-group">
+          <span class="mq-solid">AI Product Strategy</span><i class="mq-dot"></i>
+          <span class="mq-line">LLM Feature Design</span><i class="mq-dot"></i>
+          <span class="mq-solid">RAG Architecture</span><i class="mq-dot"></i>
+          <span class="mq-line">AI Agents</span><i class="mq-dot"></i>
+          <span class="mq-solid">Prompt &amp; Eval Systems</span><i class="mq-dot"></i>
+          <span class="mq-line">Backend Engineering</span><i class="mq-dot"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <section id="about" class="section px-4 md:px-16 relative" data-section="01" data-label="Services">
+      <div class="container mx-auto">
+        <header class="sec-head stagger-fade-in">
+          <p class="sec-num"><b>01</b><i></i><span>What I do</span></p>
+          <h2 class="section-heading"><em>Services</em></h2>
+        </header>
+
+        <div class="services">
+          <div class="services-intro">
+            <div class="max-w-xl space-y-4 sm:space-y-6 text-text">
               <p class="stagger-fade-in text-base sm:text-lg">
                 I work with founders, startups, and product teams that want to turn AI ideas into products people can actually use. My consulting work covers strategy, architecture, and hands-on delivery.
               </p>
               <p class="stagger-fade-in text-base sm:text-lg">
                 Whether you need an LLM feature scoped, a RAG pipeline made production-ready, or a backend rebuilt to support AI workloads, I help teams move from experiment to dependable execution.
               </p>
-              
-              <div class="stagger-fade-in mt-6 sm:mt-8">
-                <a href="WebCV.pdf" target="_blank" class="special-button bg-transparent border border-accent text-accent px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:text-white transition-colors duration-300 inline-flex items-center">
-                  <i class="fas fa-file-download mr-2"></i> DOWNLOAD PROFILE
-                </a>
+              <p class="stagger-fade-in">
+                <a href="WebCV.pdf" target="_blank" rel="noopener" class="text-link"><i class="fas fa-file-download mr-2" aria-hidden="true"></i>Download profile (PDF)</a>
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="sr-only">Consulting services</h3>
+            <ul class="service-list stagger-fade-in">
+              <li>AI Product Strategy</li>
+              <li>LLM Feature Design</li>
+              <li>RAG Architecture</li>
+              <li>AI Agents</li>
+              <li>Prompt &amp; Eval Systems</li>
+              <li>Backend Engineering</li>
+              <li>API Integration</li>
+              <li>Technical Advisory</li>
+              <li>Delivery Leadership</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="resume" class="section px-4 md:px-16 relative" data-section="02" data-label="Experience">
+      <div class="container mx-auto">
+        <header class="sec-head stagger-fade-in">
+          <p class="sec-num"><b>02</b><i></i><span>Selected experience</span></p>
+          <h2 class="section-heading"><em>Experience</em></h2>
+        </header>
+
+        <div class="exp-list" data-draw>
+          <article class="exp stagger-fade-in">
+            <p class="exp-when"><span>2024</span><span>Present</span></p>
+            <div>
+              <h3 class="exp-role">ML Engineer</h3>
+              <p class="exp-org">SupliGO Energy</p>
+              <ul class="bullets text-text space-y-2 text-base">
+                <li>Built production AI systems around NLP, LLM workflows, and retrieval-augmented generation.</li>
+                <li>Raised answer quality and reliability through prompting, context design, and end-to-end system behavior.</li>
+                <li>Shipped AI capabilities from exploration into product features the business could run in production.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="exp stagger-fade-in">
+            <p class="exp-when"><span>Jun 2022</span><span>Jan 2026</span></p>
+            <div>
+              <h3 class="exp-role">Software Engineer</h3>
+              <p class="exp-org">Abango Technologies</p>
+              <ul class="bullets text-text space-y-2 text-base">
+                <li>Built the payment and trading systems that processed over <strong>₦80 billion</strong> in transactions.</li>
+                <li>Shipped secure APIs for live payment and trading flows; cut incidents and improved transaction success rates.</li>
+                <li>Scaled backend services for higher load and traffic as the business grew.</li>
+                <li>Shortened release cycles with CI/CD and more dependable deploys.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="exp stagger-fade-in">
+            <p class="exp-when"><span>Jun 2021</span><span>Jun 2022</span></p>
+            <div>
+              <h3 class="exp-role">IoT Developer</h3>
+              <p class="exp-org">ICE</p>
+              <ul class="bullets text-text space-y-2 text-base">
+                <li>Collaborated with data teams on complex energy datasets and translated user needs into usable solutions.</li>
+                <li>Built device, sensor, and software systems for connected products.</li>
+                <li>Designed, coded, and tested features for IoT deployments.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="exp stagger-fade-in">
+            <p class="exp-when"><span>2018</span><span>2021</span></p>
+            <div>
+              <h3 class="exp-role">Earlier</h3>
+              <p class="text-text text-base mt-2">Python instructor at CoLab and freelance software engineer, 2018–2021. BSc Computer Science, University of Ilorin, 2018.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section id="work" class="section px-4 md:px-16 relative" data-section="03" data-label="Case studies">
+      <div class="container mx-auto">
+        <header class="sec-head stagger-fade-in">
+          <p class="sec-num"><b>03</b><i></i><span>Selected work</span></p>
+          <h2 class="section-heading">Case <em>studies</em></h2>
+          <p class="case-study-lead">
+            The kinds of systems I like to build: practical AI workflows, useful developer tooling, and products that make complex things easier to use.
+          </p>
+        </header>
+
+        <div class="case-studies" x-data="{ items: window.projects || [] }">
+          <template x-for="(item, index) in items" :key="item.name">
+            <article class="case-study stagger-fade-in" :class="{ 'case-study-featured': index === 0, 'has-link': item.link !== '#' }" :data-plate="item.plate" :data-index="index">
+              <span class="case-study-num" aria-hidden="true" x-text="String(index + 1).padStart(2, '0')"></span>
+              <div class="case-study-head">
+                <p class="case-study-kicker" x-text="item.kicker"></p>
+                <h3 class="case-study-title">
+                  <a :href="item.link" target="_blank" rel="noopener noreferrer" x-show="item.link !== '#'" x-text="item.name"></a>
+                  <span x-show="item.link === '#'" x-text="item.name"></span>
+                </h3>
               </div>
-            </div>
-          </div>
-          
-          <div class="md:w-1/2 pl-0 md:pl-8 lg:pl-12">
-            <h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-accent stagger-fade-in">Consulting Services</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 stagger-fade-in">
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">AI Product Strategy</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">LLM Feature Design</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">RAG Architecture</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">AI Agents</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Prompt & Eval Systems</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Backend Engineering</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">API Integration</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Technical Advisory</div>
-              <div class="skill-pill bg-gray-800 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-center text-sm sm:text-base">Delivery Leadership</div>
-            </div>
-          </div>
+              <div class="case-study-body">
+                <span class="case-study-label" x-show="index === 0">Outcome</span>
+                <p class="case-study-outcome" x-html="emphasize(item.outcome)"></p>
+                <div class="case-study-detail" x-show="index === 0">
+                  <p x-text="item.summary"></p>
+                  <div>
+                    <span class="case-study-label">Challenge</span>
+                    <p x-text="item.challenge"></p>
+                  </div>
+                  <p class="case-study-tags" x-text="item.tags.join(' · ')"></p>
+                </div>
+              </div>
+              <div class="case-study-plate" aria-hidden="true" x-html="window.plateSVG(item.plate, index)"></div>
+            </article>
+          </template>
         </div>
       </div>
     </section>
-    
-    <!-- Resume Section -->
-    <section id="resume" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
+
+    <!-- Audit -->
+    <section id="audit" class="section section-paper px-4 md:px-16 relative" data-section="04" data-label="The audit">
       <div class="container mx-auto">
-        <div class="flex flex-col mb-8 sm:mb-12">
-          <span class="text-accent mb-2 overflow-hidden">
-            <span class="reveal-text">
-              <span>02 / EXPERIENCE & CREDIBILITY</span>
-            </span>
-          </span>
-          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">EXPERIENCE</h2>
-        </div>
-        
-        <div class="flex flex-col md:flex-row mb-12 sm:mb-16 md:mb-20">
-          <div class="md:w-1/3 mb-6 md:mb-0">
-            <h3 class="text-lg sm:text-xl font-bold text-accent stagger-fade-in">Foundation</h3>
-          </div>
-          
-          <div class="md:w-2/3">
-            <div class="experience-item pb-6 sm:pb-10 stagger-fade-in">
-              <h3 class="text-lg sm:text-xl font-bold">BSc. Computer Science</h3>
-              <p class="text-accent">University of Ilorin</p>
-              <p class="text-xs sm:text-sm text-gray-500 mt-2">GRADUATED 2018</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="flex flex-col md:flex-row">
-          <div class="md:w-1/3 mb-6 md:mb-0">
-            <h3 class="text-lg sm:text-xl font-bold text-accent stagger-fade-in">Selected Experience</h3>
-          </div>
-          
-          <div class="md:w-2/3">
-            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
-              <h3 class="text-lg sm:text-xl font-bold">ML Engineer</h3>
-              <p class="text-accent">SupliGO Energy</p>
-              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">2024 - PRESENT</p>
-              <ul class="text-text space-y-1 sm:space-y-2 text-sm sm:text-base">
-                <li>• Built production AI systems around NLP, LLM workflows, and retrieval-augmented generation.</li>
-                <li>• Raised answer quality and reliability through prompting, context design, and end-to-end system behavior.</li>
-                <li>• Shipped AI capabilities from exploration into product features the business could run in production.</li>
-              </ul>
-            </div>
+        <header class="sec-head stagger-fade-in">
+          <p class="sec-num"><b>04</b><i></i><span>How I assess</span></p>
+          <h2 class="section-heading">The <em>audit</em></h2>
+        </header>
 
-			<div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
-				<h3 class="text-lg sm:text-xl font-bold">Software Engineer</h3>
-				<p class="text-accent">Abango Technologies.</p>
-				<p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">JUNE 2022 - JAN 2026</p>
-				<ul class="text-text space-y-1 sm:space-y-2 text-sm sm:text-base">
-					  <li>• Built the payment and trading systems that processed over ₦80 billion in transactions.</li>
-					  <li>• Shipped secure APIs for live payment and trading flows; cut incidents and improved transaction success rates.</li>
-					  <li>• Scaled backend services for higher load and traffic as the business grew.</li>
-					  <li>• Shortened release cycles with CI/CD and more dependable deploys.</li>
-				</ul>
-			  </div>
-
-            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
-              <h3 class="text-lg sm:text-xl font-bold">IoT Developer</h3>
-              <p class="text-accent">ICE.</p>
-              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">JUNE 2021 - JUNE 2022</p>
-              <ul class="text-text space-y-1 sm:space-y-2 text-sm sm:text-base">
-                <li>• Collaborated with data teams on complex energy datasets and translated user needs into usable solutions.</li>
-                <li>• Built device, sensor, and software systems for connected products.</li>
-                <li>• Designed, coded, and tested features for IoT deployments.</li>
-              </ul>
-            </div>
-            
-            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
-              <h3 class="text-lg sm:text-xl font-bold">Python Instructor</h3>
-              <p class="text-accent">CoLab.</p>
-              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">SEPTEMBER 2018 - OCTOBER 2021</p>
-              <p class="text-text text-sm sm:text-base">Led practical training programs that helped aspiring engineers build real skills through project-based learning.</p>
-            </div>
-            
-            <div class="experience-item pb-8 sm:pb-10 stagger-fade-in">
-              <h3 class="text-lg sm:text-xl font-bold">Software Engineer</h3>
-              <p class="text-accent">Freelance</p>
-              <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">DECEMBER 2018 - OCTOBER 2021</p>
-              <p class="text-text text-sm sm:text-base">Delivered software solutions for clients across different industries, combining technical execution with direct client collaboration.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Portfolio Section -->
-    <section id="work" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
-		<div class="container mx-auto">
-		  <div class="case-study-header">
-			<div class="case-study-heading-block stagger-fade-in">
-			  <span class="text-accent mb-2 overflow-hidden block">
-				<span class="reveal-text">
-				  <span>03 / SELECTED CASE STUDIES</span>
-				</span>
-			  </span>
-			  <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">CASE STUDIES</h2>
-			</div>
-			<div class="case-study-intro stagger-fade-in">
-			  <p class="case-study-lead">
-				These are the kinds of systems and product ideas I like to build: practical AI workflows, useful developer tooling, and digital experiences that make complex things easier to use.
-			  </p>
-			  <div class="case-study-signals">
-				<span>AI research automation</span>
-				<span>LLM product design</span>
-				<span>Developer tooling</span>
-				<span>Dependable workflows</span>
-			  </div>
-			</div>
-		  </div>
-
-		  <div class="case-study-grid" x-data="{ items: window.projects || [] }">
-			<template x-for="(item, index) in items" :key="index">
-			  <article
-				class="case-study-card stagger-fade-in"
-				:class="{
-				  'case-study-card-featured': index === 0,
-				  'case-study-card-wide': index === 1
-				}"
-			  >
-				<div class="case-study-body">
-				  <p class="case-study-kicker" x-text="item.kicker"></p>
-				  <h3 class="case-study-title" x-text="item.name"></h3>
-				  <p class="case-study-summary" x-text="item.summary"></p>
-				  <div class="case-study-notes">
-					<div class="case-study-note">
-					  <span>Challenge</span>
-					  <p x-text="item.challenge"></p>
-					</div>
-					<div class="case-study-note">
-					  <span>Outcome</span>
-					  <p x-text="item.outcome"></p>
-					</div>
-				  </div>
-				  <div class="case-study-footer">
-					<div class="case-study-tags">
-					  <template x-for="tag in item.tags" :key="tag">
-						<span class="case-study-tag" x-text="tag"></span>
-					  </template>
-					</div>
-					<a :href="item.link" target="_blank" rel="noopener noreferrer" class="case-study-link">
-					  Open Case Study
-					</a>
-				  </div>
-				</div>
-			  </article>
-			</template>
-		  </div>
-		</div>
-	  </section>
-    
-    <!-- Audit Section -->
-    <section id="audit" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
-      <div class="container mx-auto">
-        <div class="flex flex-col mb-8 sm:mb-12">
-          <span class="text-accent mb-2 overflow-hidden">
-            <span class="reveal-text">
-              <span>04 / THE AUDIT</span>
-            </span>
-          </span>
-          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">THE AUDIT</h2>
-        </div>
-
-        <div class="flex flex-col md:flex-row">
-          <div class="md:w-1/2 mb-10 md:mb-0">
-            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold stagger-fade-in mb-8 sm:mb-10">Will This Survive Reality?</h3>
-            <div class="stagger-fade-in audit-pillars">
-              <div class="audit-pillar">
+        <div class="audit">
+          <div>
+            <h3 class="audit-question stagger-fade-in">Will this survive <em>reality?</em></h3>
+            <ol class="stagger-fade-in audit-pillars">
+              <li class="audit-pillar">
                 <span class="audit-pillar-num">01</span>
                 <span>User-System Fit</span>
-              </div>
-              <div class="audit-pillar">
+              </li>
+              <li class="audit-pillar">
                 <span class="audit-pillar-num">02</span>
                 <span>Silent Failure Resistance</span>
-              </div>
-              <div class="audit-pillar">
+              </li>
+              <li class="audit-pillar">
                 <span class="audit-pillar-num">03</span>
                 <span>Evaluation Integrity</span>
-              </div>
-              <div class="audit-pillar">
+              </li>
+              <li class="audit-pillar">
                 <span class="audit-pillar-num">04</span>
                 <span>Organizational Load</span>
-              </div>
-              <div class="audit-pillar">
+              </li>
+              <li class="audit-pillar">
                 <span class="audit-pillar-num">05</span>
                 <span>Scope-Reality Alignment</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="md:w-1/2 pl-0 md:pl-8 lg:pl-12">
-            <p class="stagger-fade-in text-text text-base sm:text-lg mb-6 sm:mb-8 max-w-sm">
+              </li>
+            </ol>
+            <p class="stagger-fade-in audit-note">
               Most teams are failing at one of these. Few know which one.
             </p>
-            <div class="stagger-fade-in">
-              <a href="#contact" class="special-button bg-transparent border border-accent text-accent px-4 sm:px-6 py-2 sm:py-3 rounded-full hover:text-white transition-colors duration-300 inline-flex items-center">
-                Request an Audit
-              </a>
-            </div>
+            <p class="stagger-fade-in">
+              <a href="#contact" class="btn btn-ghost">Request an audit</a>
+            </p>
           </div>
+
+          <div class="fig stagger-fade-in" id="auditFigure"></div>
         </div>
       </div>
     </section>
 
-    <!-- Engagement Section -->
-    <section id="engagement" class="py-16 sm:py-20 px-4 md:px-16 relative">
+    <!-- Engagement -->
+    <section id="engagement" class="section px-4 md:px-16 relative" data-section="05" data-label="Engagement">
       <div class="container mx-auto">
-        <div class="flex flex-col mb-8 sm:mb-12">
-          <span class="text-accent mb-2 overflow-hidden">
-            <span class="reveal-text">
-              <span>05 / HOW AN ENGAGEMENT WORKS</span>
-            </span>
-          </span>
-          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">ENGAGEMENT</h2>
-        </div>
+        <header class="sec-head stagger-fade-in">
+          <p class="sec-num"><b>05</b><i></i><span>The process</span></p>
+          <h2 class="section-heading">How an engagement <em>works</em></h2>
+        </header>
 
-        <div class="engagement-stages">
-          <div class="engagement-stage stagger-fade-in">
+        <ol class="engagement-stages" data-draw>
+          <li class="engagement-stage stagger-fade-in">
             <p class="engagement-stage-num">01</p>
-            <h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Intake</h3>
-            <p class="text-text text-sm sm:text-base">A pre-audit questionnaire that reveals what you can't answer.</p>
-          </div>
-          <div class="engagement-stage stagger-fade-in">
+            <h3 class="engagement-stage-title">Intake</h3>
+            <p class="text-text text-base">A pre-audit questionnaire that reveals what you can't answer.</p>
+          </li>
+          <li class="engagement-stage stagger-fade-in">
             <p class="engagement-stage-num">02</p>
-            <h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Audit</h3>
-            <p class="text-text text-sm sm:text-base">Three structured interviews and artifact review across five pillars.</p>
-          </div>
-          <div class="engagement-stage stagger-fade-in">
+            <h3 class="engagement-stage-title">Audit</h3>
+            <p class="text-text text-base">Three structured interviews and artifact review across five pillars.</p>
+          </li>
+          <li class="engagement-stage stagger-fade-in">
             <p class="engagement-stage-num">03</p>
-            <h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Roadmap</h3>
-            <p class="text-text text-sm sm:text-base">A written report, twelve to twenty pages, not a slide deck.</p>
-          </div>
-          <div class="engagement-stage stagger-fade-in">
+            <h3 class="engagement-stage-title">Roadmap</h3>
+            <p class="text-text text-base">A written report, twelve to twenty pages, not a slide deck.</p>
+          </li>
+          <li class="engagement-stage stagger-fade-in">
             <p class="engagement-stage-num">04</p>
-            <h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Implementation</h3>
-            <p class="text-text text-sm sm:text-base">Hands-on build or advisory, scoped from the roadmap findings.</p>
-          </div>
-          <div class="engagement-stage stagger-fade-in">
+            <h3 class="engagement-stage-title">Implementation</h3>
+            <p class="text-text text-base">Hands-on build or advisory, scoped from the roadmap findings.</p>
+          </li>
+          <li class="engagement-stage stagger-fade-in">
             <p class="engagement-stage-num">05</p>
-            <h3 class="text-base sm:text-lg font-bold mb-2 sm:mb-3">Retainer</h3>
-            <p class="text-text text-sm sm:text-base">Ongoing strategic and technical support.</p>
-          </div>
-        </div>
+            <h3 class="engagement-stage-title">Retainer</h3>
+            <p class="text-text text-base">Ongoing strategic and technical support.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="min-h-screen py-16 sm:py-20 px-4 md:px-16 relative">
+    <!-- Contact -->
+    <section id="contact" class="section section-blue px-4 md:px-16 relative" data-section="06" data-label="Contact">
       <div class="container mx-auto">
-        <div class="flex flex-col mb-8 sm:mb-12">
-          <span class="text-accent mb-2 overflow-hidden">
-            <span class="reveal-text">
-              <span>06 / START A CONVERSATION</span>
-            </span>
-          </span>
-	          <h2 class="section-heading parallax-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl">CONSULTATION</h2>
-        </div>
-        
-        <div class="flex flex-col md:flex-row">
-          <div class="md:w-1/2 mb-10 md:mb-0">
-            <div class="stagger-fade-in max-w-xl mb-6 text-text text-base sm:text-lg">
-              Tell me what you're building, where you're stuck, and what kind of support you need. I usually work with teams that need strategy, rapid execution, or both.
-            </div>
-            <form class="space-y-4 sm:space-y-6 stagger-fade-in">
+        <header class="sec-head stagger-fade-in">
+          <p class="sec-num"><b>06</b><i></i><span>Contact</span></p>
+          <h2 class="section-heading">Start a <em>conversation</em></h2>
+        </header>
+
+        <div class="contact-grid">
+          <div>
+            <p class="stagger-fade-in max-w-xl mb-10 text-text text-base sm:text-lg">
+              Tell me what you're building, where you're stuck, and what kind of support you need. I usually work with teams that need strategy, rapid execution, or both. Interested in the audit? Mention it in your brief.
+            </p>
+            <form class="stagger-fade-in" novalidate>
               <input type="hidden" name="access_key" value="e0b97764-7c83-4b1a-b9d1-7e41a3efef91">
-              <div>
-                <label for="name" class="block text-sm text-text mb-2">Name</label>
-                <input type="text" id="name" name="name" class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 text-base">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+              </div>
+
+              <div class="field">
+                <label for="email">Work email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+
+              <div class="field">
+                <label for="message">Project brief</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
               </div>
 
               <div>
-                <label for="email" class="block text-sm text-text mb-2">Work Email</label>
-                <input type="email" id="email" name="email" class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 text-base">
+                <button type="submit" class="btn btn-primary w-full sm:w-auto">Send request <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                <p class="form-status mt-3" id="formStatus" role="status" aria-live="polite"></p>
               </div>
-
-              <div>
-                <label for="message" class="block text-sm text-text mb-2">Project Brief</label>
-                <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 text-base"></textarea>
-              </div>
-              
-              <button type="submit" class="w-full sm:w-auto special-button bg-transparent border border-accent text-accent px-4 py-2 sm:px-6 sm:py-3 rounded-full hover:text-white transition-colors duration-300">
-                Request Consultation <i class="fas fa-paper-plane ml-2"></i>
-              </button>
             </form>
           </div>
-          
-          <div class="md:w-1/2 md:pl-8 lg:pl-12">
-            <div class="space-y-6 sm:space-y-10">
-              <div class="stagger-fade-in">
-                <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-accent">Direct Contact</h3>
-                <div class="space-y-3 sm:space-y-4">
-                  <div class="flex items-start">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 sm:mr-4">
-                      <i class="fas fa-envelope text-accent text-sm sm:text-base"></i>
-                    </div>
-                    <div>
-                      <p class="text-xs sm:text-sm text-text">Email</p>
-                      <p class="text-sm sm:text-base break-all">mubaraqsanusi908@gmail.com</p>
-                    </div>
-                  </div>
-                  
-                  <div class="flex items-start">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3 sm:mr-4">
-                      <i class="fas fa-phone-alt text-accent text-sm sm:text-base"></i>
-                    </div>
-                    <div>
-                      <p class="text-xs sm:text-sm text-text">Phone</p>
-                      <p class="text-sm sm:text-base">+234 8132554349</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="stagger-fade-in">
-                <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-accent">Where To Find Me</h3>
-                <div class="flex space-x-4 sm:space-x-6">
-                  <a href="https://x.com/WeirdMatrix" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                  <a href="https://www.linkedin.com/in/sirematrix/" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin-in"></i>
-                  </a>
-                  <a href="https://github.com/LPMatrix" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800 flex items-center justify-center social-icon" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                  </a>
-                </div>
-              </div>
+
+          <div class="contact-side">
+            <div class="stagger-fade-in">
+              <h3 class="contact-label">Direct contact</h3>
+              <a href="mailto:mubaraqsanusi908@gmail.com" class="contact-mail">mubaraqsanusi908@gmail.com</a>
+              <p class="mt-4"><a href="tel:+2348132554349" class="text-link">+234 8132554349</a></p>
+            </div>
+
+            <div class="stagger-fade-in">
+              <h3 class="contact-label">Elsewhere</h3>
+              <ul class="flex flex-wrap gap-x-6 gap-y-2">
+                <li><a href="https://www.linkedin.com/in/sirematrix/" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/LPMatrix" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://x.com/WeirdMatrix" class="social-link" target="_blank" rel="noopener noreferrer">X</a></li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-  
+
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8 sm:py-10 text-center relative z-10">
+  <footer class="site-footer relative z-10">
     <div class="container mx-auto px-4">
-      <div class="mb-6 sm:mb-8">
-        <a href="#" class="text-2xl sm:text-3xl font-bold">Mubaraq<span class="text-gradient">.</span></a>
+      <div class="footer-row">
+        <p class="footer-line">Helping teams turn AI ideas into dependable products and systems.</p>
+        <ul class="flex gap-x-6">
+          <li><a href="https://www.linkedin.com/in/sirematrix/" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/LPMatrix" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://x.com/WeirdMatrix" class="social-link" target="_blank" rel="noopener noreferrer">X</a></li>
+        </ul>
       </div>
-      <div class="max-w-xs sm:max-w-sm md:max-w-lg mx-auto mb-6 sm:mb-8">
-        <p class="text-text text-sm sm:text-base">Helping teams turn AI ideas into dependable products and systems.</p>
-      </div>
-      <div class="flex justify-center space-x-4 sm:space-x-6 mb-6 sm:mb-8">
-        <a href="https://x.com/WeirdMatrix" class="text-lg sm:text-xl social-icon" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/sirematrix/" class="text-lg sm:text-xl social-icon" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/LPMatrix" class="text-lg sm:text-xl social-icon" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <p class="text-xs sm:text-sm text-text">Created with <span class="text-accent">❤️</span> © <span id="currentYear"></span></p>
-      
-      <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-      </script>
+      <p class="text-sm text-muted">&copy; <span id="currentYear"></span> Sanusi Mubaraq</p>
     </div>
+    <a href="#" class="footer-mark" aria-label="Back to top">Mubaraq<span>.</span></a>
   </footer>
 
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

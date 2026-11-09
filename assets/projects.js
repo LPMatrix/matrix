@@ -1,6 +1,24 @@
+// Wraps figures such as "~70%" or "under 2 minutes" in <strong> so the
+// result of each case study reads first. Text is escaped before wrapping.
+window.emphasize = function (text) {
+  const escaped = String(text).replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[character]));
+
+  return escaped.replace(
+    /((?:under\s+)?~?₦?\d[\d,]*(?:\.\d+)?\+?%?(?!-)(?:\s(?:NGX\s+stocks|trade\s+corridors|minutes?|hours?|days?|seconds?|billion))?)/gi,
+    '<strong>$1</strong>'
+  );
+};
+
 window.projects = [
   {
     name: "Notion MCP Research Pipeline",
+    plate: "arcs",
     link: "https://github.com/LPMatrix/notion-mcp",
     kicker: "Flagship AI Workflow",
     summary:
@@ -13,6 +31,7 @@ window.projects = [
   },
   {
     name: "Code Explainer",
+    plate: "lines",
     link: "https://code-explainer.netlify.app",
     kicker: "LLM Developer Tooling",
     summary:
@@ -25,6 +44,7 @@ window.projects = [
   },
   {
     name: "TickerNG",
+    plate: "bars",
     link: "https://tickerng.com",
     kicker: "Multi-Agent Financial Intelligence",
     summary:
@@ -37,6 +57,7 @@ window.projects = [
   },
   {
     name: "SpecOS",
+    plate: "grid",
     link: "#",
     kicker: "AI-Powered Product Specification",
     summary:
@@ -49,6 +70,7 @@ window.projects = [
   },
   {
     name: "Afrigate",
+    plate: "fan",
     link: "https://github.com/LPMatrix/afrigate",
     kicker: "Multi-Agent Trade Compliance Architecture",
     summary:
